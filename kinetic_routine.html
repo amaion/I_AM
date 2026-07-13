@@ -49,7 +49,6 @@
             border-color: #FF4B2B;
             box-shadow: 0 0 10px rgba(255, 75, 43, 0.5);
         }
-<<<<<<< HEAD
         
         /* Grayscale transformation for image_fd8ce2.jpg as requested */
         .anatomy-grayscale-bg {
@@ -67,27 +66,17 @@
             stroke-width: 2px;
             filter: drop-shadow(0px 0px 10px rgba(255, 75, 43, 0.95));
             transition: all 0.25s ease;
-=======
-        /* Muscle active styling */
-        .muscle-active {
-            fill: #FF4B2B !important;
-            filter: drop-shadow(0px 0px 8px rgba(255, 75, 43, 0.9));
-            transition: all 0.3s ease;
->>>>>>> parent of 73f2d18 (수정사항)
         }
         .muscle-hover {
-            fill: #334155;
+            fill: transparent;
+            stroke: transparent;
             cursor: pointer;
             transition: all 0.2s ease;
         }
         .muscle-hover:hover {
-<<<<<<< HEAD
             fill: rgba(255, 75, 43, 0.45);
             stroke: #FF4B2B;
             stroke-width: 1.5px;
-=======
-            fill: rgba(255, 75, 43, 0.6);
->>>>>>> parent of 73f2d18 (수정사항)
         }
 
         /* Custom css to crop text and apply red coloring to image_fd7de0.jpg pictograms */
@@ -192,22 +181,14 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
             <!-- Right Side: SVG Dynamic Muscle Interactive Map -->
             <div id="interactive-map" class="lg:col-span-7 bg-brand-darkCard/80 dark:bg-brand-darkCard/80 light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder p-5 sm:p-6 rounded-2xl relative">
                 <div class="absolute top-4 right-4 bg-black/40 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 px-3 py-1 rounded-lg text-[10px] text-slate-400 light:text-slate-600 flex items-center gap-1.5">
                     <i class="fa-solid fa-circle-info text-brand-red"></i> 인체 부위 또는 우측 리스트에 마우스를 대보세요
-=======
-            <!-- Right Side: SVG Dynamic Muscle Interactive Map (Double body: image_e4856c.png ref) -->
-            <div id="interactive-map" class="lg:col-span-7 bg-brand-darkCard/80 border border-brand-darkBorder p-5 sm:p-6 rounded-2xl relative">
-                <div class="absolute top-4 right-4 bg-black/40 border border-brand-darkBorder px-3 py-1 rounded-lg text-[10px] text-slate-400 flex items-center gap-1.5">
-                    <i class="fa-solid fa-circle-info text-brand-red"></i> 인체 부위 또는 리스트에 마우스를 대보세요
->>>>>>> parent of 73f2d18 (수정사항)
                 </div>
                 <h3 class="text-lg font-bold mb-1 flex items-center gap-2 text-slate-800 dark:text-white light:text-slate-800">
                     <span class="w-2.5 h-2.5 bg-brand-red rounded-full"></span> 양방향 시각 자극 지도
                 </h3>
-<<<<<<< HEAD
                 <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs mb-4">정밀 앞·뒤 9대 타겟 부위 연동 시스템 (글씨 라벨이 지워진 흑백 해부도 매핑)</p>
 
                 <!-- Current Active Muscle Tracker Overlay -->
@@ -241,101 +222,48 @@
                                     <!-- 1. 어깨 (Shoulders - front) -->
                                     <path id="muscle-shoulders-front-l" class="muscle-hover" d="M68,105 C62,111 60,123 65,133 L71,130 C69,120 73,110 76,104 Z" data-muscle="shoulders" />
                                     <path id="muscle-shoulders-front-r" class="muscle-hover" d="M132,105 C138,111 140,123 135,133 L129,130 C131,120 127,110 124,104 Z" data-muscle="shoulders" />
-=======
-                <p class="text-slate-400 text-xs mb-4">정밀 앞·뒤 9대 타겟 부위 연동 시스템 (Reference: image_e4856c.png)</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <!-- SVG Dual Anatomical Map (Front & Back) -->
-                    <div class="md:col-span-7 flex justify-center">
-                        <div class="relative w-full max-w-[340px] md:max-w-none h-[340px] bg-black/30 rounded-xl p-2 flex justify-center items-center">
-                            
-                            <!-- TWO HUMAN BODY SVG (FRONT & BACK side-by-side) -->
-                            <svg id="humanoid-dual-svg" viewBox="0 0 440 380" class="w-full h-full max-h-[320px]">
-                                <!-- DEFINITIONS FOR NEON FILTERS -->
-                                <defs>
-                                    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feGaussianBlur stdDeviation="5" result="blur" />
-                                        <feMerge>
-                                            <feMergeNode in="blur" />
-                                            <feMergeNode in="SourceGraphic" />
-                                        </feMerge>
-                                    </filter>
-                                </defs>
-
-                                <!-- LEFT: FRONT SILHOUETTE BASE -->
-                                <g transform="translate(10, 0)">
-                                    <!-- Silhouette Contour -->
-                                    <path d="M100,30 C88,30 88,52 100,52 C112,52 112,30 100,30 Z" fill="#1e293b" />
-                                    <path d="M100,52 L115,70 C125,80 130,90 135,105 L148,155 L143,205 L125,265 L135,335 L138,375 L120,375 L115,312 L100,252 L85,312 L80,375 L62,375 L65,335 L75,265 L57,205 L52,155 L65,105 C70,90 75,80 85,70 Z" fill="#1e293b" />
-                                    <!-- Neck and joints -->
-                                    <path d="M94,52 L106,52 L103,70 L97,70 Z" fill="#0f172a" />
-                                    <text x="100" y="22" fill="#64748b" font-size="10" font-weight="bold" text-anchor="middle">앞면 (FRONT)</text>
-
-                                    <!-- FRONT INTERACTIVE MUSCLES -->
-                                    <!-- 1. 어깨 (Shoulders - front/side) -->
-                                    <path id="muscle-shoulders-front-l" class="muscle-hover" d="M66,105 C60,113 58,125 63,135 L69,132 C67,122 71,112 74,106 Z" data-muscle="shoulders" />
-                                    <path id="muscle-shoulders-front-r" class="muscle-hover" d="M134,105 C140,113 142,125 137,135 L131,132 C133,122 129,112 126,106 Z" data-muscle="shoulders" />
->>>>>>> parent of 73f2d18 (수정사항)
 
                                     <!-- 2. 이두 (Biceps) -->
-                                    <path id="muscle-biceps-l" class="muscle-hover" d="M57,143 C54,153 53,165 52,178 L58,178 C59,165 61,153 63,143 Z" data-muscle="biceps" />
-                                    <path id="muscle-biceps-r" class="muscle-hover" d="M143,143 C146,153 147,165 148,178 L142,178 C141,165 139,153 137,143 Z" data-muscle="biceps" />
+                                    <path id="muscle-biceps-l" class="muscle-hover" d="M58,143 C55,153 54,165 53,178 L59,178 C60,165 62,153 64,143 Z" data-muscle="biceps" />
+                                    <path id="muscle-biceps-r" class="muscle-hover" d="M142,143 C145,153 146,165 147,178 L141,178 C140,165 138,153 136,143 Z" data-muscle="biceps" />
 
                                     <!-- 3. 가슴 (Chest) -->
-                                    <path id="muscle-chest-l" class="muscle-hover" d="M78,110 C88,110 97,114 97,135 L76,135 C75,124 76,115 78,110 Z" data-muscle="chest" />
-                                    <path id="muscle-chest-r" class="muscle-hover" d="M122,110 C112,110 103,114 103,135 L124,135 C125,124 124,115 122,110 Z" data-muscle="chest" />
+                                    <path id="muscle-chest-l" class="muscle-hover" d="M80,110 C90,110 99,114 99,135 L78,135 C77,124 78,115 80,110 Z" data-muscle="chest" />
+                                    <path id="muscle-chest-r" class="muscle-hover" d="M120,110 C110,110 101,114 101,135 L122,135 C123,124 122,115 120,110 Z" data-muscle="chest" />
 
                                     <!-- 4. 배 (Abs) -->
-                                    <path id="muscle-abs" class="muscle-hover" d="M83,143 L117,143 L115,190 L85,190 Z" data-muscle="abs" />
+                                    <path id="muscle-abs" class="muscle-hover" d="M85,143 L115,143 L113,190 L87,190 Z" data-muscle="abs" />
 
                                     <!-- 5. 대퇴사두근 (Quads - 앞벅지) -->
-                                    <path id="muscle-quads-l" class="muscle-hover" d="M76,210 C72,230 74,258 84,278 L93,275 C88,255 85,230 85,210 Z" data-muscle="quads" />
-                                    <path id="muscle-quads-r" class="muscle-hover" d="M124,210 C128,230 126,258 116,278 L107,275 C112,255 115,230 115,210 Z" data-muscle="quads" />
+                                    <path id="muscle-quads-l" class="muscle-hover" d="M78,210 C74,230 76,258 86,278 L95,275 C90,255 87,230 87,210 Z" data-muscle="quads" />
+                                    <path id="muscle-quads-r" class="muscle-hover" d="M122,210 C126,230 124,258 114,278 L105,275 C110,255 113,230 113,210 Z" data-muscle="quads" />
                                 </g>
 
-                                <!-- RIGHT: BACK SILHOUETTE BASE -->
+                                <!-- RIGHT SILHOUETTE OVERLAY (BACK) -->
                                 <g transform="translate(230, 0)">
-                                    <!-- Silhouette Contour -->
-                                    <path d="M100,30 C88,30 88,52 100,52 C112,52 112,30 100,30 Z" fill="#1e293b" />
-                                    <path d="M100,52 L115,70 C125,80 130,90 135,105 L148,155 L143,205 L125,265 L135,335 L138,375 L120,375 L115,312 L100,252 L85,312 L80,375 L62,375 L65,335 L75,265 L57,205 L52,155 L65,105 C70,90 75,80 85,70 Z" fill="#1e293b" />
-                                    <!-- Neck and Spine base -->
-                                    <path d="M94,52 L106,52 L103,70 L97,70 Z" fill="#0f172a" />
-                                    <text x="100" y="22" fill="#64748b" font-size="10" font-weight="bold" text-anchor="middle">뒷면 (BACK)</text>
-
-                                    <!-- BACK INTERACTIVE MUSCLES -->
                                     <!-- 1. 어깨 뒤 (Shoulders - back) -->
-                                    <path id="muscle-shoulders-back-l" class="muscle-hover" d="M66,105 C61,111 59,122 64,130 L69,128 C67,120 71,111 74,106 Z" data-muscle="shoulders" />
-                                    <path id="muscle-shoulders-back-r" class="muscle-hover" d="M134,105 C139,111 141,122 136,130 L131,128 C133,120 129,111 126,106 Z" data-muscle="shoulders" />
+                                    <path id="muscle-shoulders-back-l" class="muscle-hover" d="M68,105 C63,111 61,122 66,130 L71,128 C69,120 73,111 76,106 Z" data-muscle="shoulders" />
+                                    <path id="muscle-shoulders-back-r" class="muscle-hover" d="M132,105 C137,111 139,122 134,130 L129,128 C131,120 127,111 124,106 Z" data-muscle="shoulders" />
 
                                     <!-- 2. 삼두 (Triceps) -->
-                                    <path id="muscle-triceps-l" class="muscle-hover" d="M56,138 C53,148 51,160 50,172 L56,172 C57,160 59,148 61,138 Z" data-muscle="triceps" />
-                                    <path id="muscle-triceps-r" class="muscle-hover" d="M144,138 C147,148 149,160 150,172 L144,172 C143,160 141,148 139,138 Z" data-muscle="triceps" />
+                                    <path id="muscle-triceps-l" class="muscle-hover" d="M58,138 C55,148 53,160 52,172 L58,172 C59,160 61,148 63,138 Z" data-muscle="triceps" />
+                                    <path id="muscle-triceps-r" class="muscle-hover" d="M142,138 C145,148 147,160 148,172 L142,172 C141,160 139,148 137,138 Z" data-muscle="triceps" />
 
-<<<<<<< HEAD
                                     <!-- 3. 등 (Back) -->
                                     <path id="muscle-back" class="muscle-hover" d="M74,130 L126,130 L120,192 L80,192 Z" data-muscle="back" />
 
                                     <!-- 4. 대퇴이두근 (Hamstrings - 뒷벅지) -->
                                     <path id="muscle-hamstrings-l" class="muscle-hover" d="M79,215 C76,233 78,258 86,278 L94,275 C90,255 88,233 88,215 Z" data-muscle="hamstrings" />
                                     <path id="muscle-hamstrings-r" class="muscle-hover" d="M121,215 C124,233 122,258 114,278 L106,275 C110,255 112,233 112,215 Z" data-muscle="hamstrings" />
-=======
-                                    <!-- 3. 등 (Back / Latissimus) -->
-                                    <path id="muscle-back" class="muscle-hover" d="M72,130 L128,130 L122,192 L78,192 Z" data-muscle="back" />
-
-                                    <!-- 4. 대퇴이두근 (Hamstrings - 허벅지 뒤) -->
-                                    <path id="muscle-hamstrings-l" class="muscle-hover" d="M77,215 C74,233 76,258 84,278 L92,275 C88,255 86,233 86,215 Z" data-muscle="hamstrings" />
-                                    <path id="muscle-hamstrings-r" class="muscle-hover" d="M123,215 C126,233 124,258 116,278 L108,275 C112,255 114,233 114,215 Z" data-muscle="hamstrings" />
->>>>>>> parent of 73f2d18 (수정사항)
 
                                     <!-- 5. 종아리 (Calves) -->
-                                    <path id="muscle-calves-l" class="muscle-hover" d="M80,292 C77,310 79,335 83,355 L90,355 C88,335 87,310 87,292 Z" data-muscle="calves" />
-                                    <path id="muscle-calves-r" class="muscle-hover" d="M120,292 C123,310 121,335 117,355 L110,355 C112,335 113,310 113,292 Z" data-muscle="calves" />
+                                    <path id="muscle-calves-l" class="muscle-hover" d="M82,292 C79,310 81,335 85,355 L92,355 C90,335 89,310 89,292 Z" data-muscle="calves" />
+                                    <path id="muscle-calves-r" class="muscle-hover" d="M118,292 C121,310 119,335 115,355 L108,355 C110,335 111,310 111,292 Z" data-muscle="calves" />
                                 </g>
                             </svg>
                         </div>
                     </div>
 
-<<<<<<< HEAD
                     <!-- Right Muscle Linked Exercises list -->
                     <div class="md:col-span-5 space-y-2 max-h-[350px] overflow-y-auto pr-1">
                         <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1 border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 pb-1">근육 타겟 리스트 (9대 부위)</div>
@@ -350,38 +278,6 @@
                         <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="shoulders">
                             <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">삼각근 (어깨)</span>
                             <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Front/Back</span>
-=======
-                    <!-- Right Muscle Linked Exercises list (image_e4858c.png minimalist pictogram style) -->
-                    <div class="md:col-span-5 space-y-2 max-h-[340px] overflow-y-auto pr-1">
-                        <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1 border-b border-brand-darkBorder pb-1">근육 타겟 리스트 (9개 세분화)</div>
-                        
-                        <!-- 1. 가슴 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="chest">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <!-- Stylized Chest Pictogram -->
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M4 11h16v2H4zm0-4h16v2H4zm0 8h16v2H4z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">대흉근 (가슴)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT</span>
-                        </div>
-
-                        <!-- 2. 어깨 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="shoulders">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <!-- Pictogram (Ref: image_e4858c.png styled barbell lift) -->
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><circle cx="12" cy="5" r="2"/><path d="M4 10h16v2H4zm8 3c-2.2 0-4 1.8-4 4h8c0-2.2-1.8-4-4-4z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">삼각근 (어깨)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT/BACK</span>
->>>>>>> parent of 73f2d18 (수정사항)
                         </div>
 
                         <!-- Biceps Card -->
@@ -455,28 +351,17 @@
                                 <i class="fa-solid fa-rotate-left"></i> 기구 초기화
                             </button>
                         </div>
-<<<<<<< HEAD
                         <p class="text-[10px] text-slate-500 light:text-slate-500 leading-relaxed">아무 기구도 체크하지 않을 시 바벨, 덤벨 등 핵심 프리웨이트 중심 루틴이 분할별 안전 배율에 맞춰 구성됩니다.</p>
                         
                         <!-- 12-Diverse Equipments Grid mapped using image_fd7de0.jpg -->
-=======
-                        <p class="text-[10px] text-slate-500 leading-relaxed">아무 기구도 체크하지 않을 시 가벨, 덤벨 등 핵심 프리웨이트 중심 루틴이 상/하체 안전 배율에 맞춰 구성됩니다.</p>
-                        
-                        <!-- 12-Diverse Equipments Grid (Ref: image_e4858c.png minimalist pictogram styles) -->
->>>>>>> parent of 73f2d18 (수정사항)
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2" id="equipments-grid">
                             
                             <!-- 1. Chest Press -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="chest-press">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -10px; top: -10px;" alt="Chest Press Pictogram" />
                                     </div>
-=======
-                                    <!-- Chest Icon -->
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 2c1.1 0 2 .9 2 2v6h6v2h-6v6c0 1.1-.9 2-2 2s-2-.9-2-2v-6H4v-2h6V4c0-1.1.9-2 2-2z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -490,14 +375,9 @@
                             <!-- 2. Pec Deck Fly -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="pec-deck">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -102px; top: -10px;" alt="Pec Deck Fly" />
                                     </div>
-=======
-                                    <!-- Fly Icon -->
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 4c-4.4 0-8 3.6-8 8s3.6 8 8 8c1.1 0 2-.9 2-2s-.9-2-2-2-4-1.8-4-4 1.8-4 4-4 2-.9 2-2-.9-2-2-2z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -511,14 +391,9 @@
                             <!-- 3. Lat Pulldown -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="lat-pulldown">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -195px; top: -10px;" alt="Lat Pulldown" />
                                     </div>
-=======
-                                    <!-- Lat Icon -->
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M19 13H5V11H19V13ZM12 5C9.8 5 8 6.8 8 9H16C16 6.8 14.2 5 12 5Z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -532,13 +407,9 @@
                             <!-- 4. Seated Cable Row -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-row">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -10px; top: -115px;" alt="Cable Row" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM9 14H7v-4h2v4z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -552,13 +423,9 @@
                             <!-- 5. Shoulder Press -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="shoulder-press">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -125px; top: -115px;" alt="Shoulder Press" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 10c-3.3 0-6 2.7-6 6v2h12v-2c0-3-2.7-6-6-6z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -572,13 +439,9 @@
                             <!-- 6. Lateral Raise Machine -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="lateral-raise">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -260px; top: -115px;" alt="Lateral Raise" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 2A10 10 0 1 0 22 12 10 10 0 0 0 12 2zm1 14h-2V8h2z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -592,13 +455,9 @@
                             <!-- 7. Leg Extension -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-extension">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -10px; top: -222px;" alt="Leg Extension" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm3 11h-6V9h6z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -612,39 +471,25 @@
                             <!-- 8. Leg Press -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-press">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -125px; top: -222px;" alt="Leg Press" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M4 6h16v12H4zm2 2v8h12V8z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-<<<<<<< HEAD
                                 <div class="text-left mt-1">
                                     <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">레그 프레스 머신</p>
                                     <span class="text-[9px] text-slate-400 font-semibold">허벅지 전체 (대근육 • +3점)</span>
-=======
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">레그 프레스</p>
-                                    <span class="text-[9px] text-slate-500">허벅지전체 (3점)</span>
->>>>>>> parent of 73f2d18 (수정사항)
                                 </div>
                             </div>
 
                             <!-- 9. Lying Leg Curl -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-curl">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -260px; top: -222px;" alt="Leg Curl" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2V8h2z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -658,13 +503,9 @@
                             <!-- 10. Calf Raise Machine -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="calf-raise">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -98px; top: -330px;" alt="Calf Raise" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M16 6H8v12h8V6zm-6 2h4v8h-4V8z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -678,13 +519,9 @@
                             <!-- 11. Cable Curl (Biceps) -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-curl">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -190px; top: -330px;" alt="Cable Biceps Curl" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 2A10 10 0 0 0 2 12h4a6 6 0 0 1 12 0h4A10 10 0 0 0 12 2z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -698,13 +535,9 @@
                             <!-- 12. Cable Pushdown (Triceps) -->
                             <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-pushdown">
                                 <div class="flex items-center justify-between">
-<<<<<<< HEAD
                                     <div class="sprite-container">
                                         <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -285px; top: -330px;" alt="Cable Triceps Pushdown" />
                                     </div>
-=======
-                                    <svg viewBox="0 0 24 24" class="w-6 h-6 text-brand-red/80 fill-current"><path d="M12 22a10 10 0 0 0 10-10h-4a6 6 0 0 1-12 0H2a10 10 0 0 0 10 10z"/></svg>
->>>>>>> parent of 73f2d18 (수정사항)
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
@@ -726,33 +559,20 @@
                         <div class="grid grid-cols-3 gap-2">
                             <label class="relative block cursor-pointer select-none">
                                 <input type="radio" name="difficulty" value="beginner" checked class="sr-only peer">
-<<<<<<< HEAD
                                 <div class="p-2.5 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
                                     <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">초급자</p>
                                     <span class="text-[9px] text-slate-400 block mt-0.5">3세트 (55% 1RM)</span>
-=======
-                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard border border-brand-darkBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
-                                    <p class="text-xs font-bold text-white">초급자</p>
-                                    <span class="text-[9px] text-slate-500 block mt-0.5">50~60% 1RM</span>
->>>>>>> parent of 73f2d18 (수정사항)
                                 </div>
                             </label>
                             <label class="relative block cursor-pointer select-none">
                                 <input type="radio" name="difficulty" value="intermediate" class="sr-only peer">
-<<<<<<< HEAD
                                 <div class="p-2.5 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
                                     <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">중급자</p>
                                     <span class="text-[9px] text-slate-400 block mt-0.5">4세트 (75% 1RM)</span>
-=======
-                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard border border-brand-darkBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
-                                    <p class="text-xs font-bold text-white">중급자</p>
-                                    <span class="text-[9px] text-slate-500 block mt-0.5">70~80% 1RM</span>
->>>>>>> parent of 73f2d18 (수정사항)
                                 </div>
                             </label>
                             <label class="relative block cursor-pointer select-none">
                                 <input type="radio" name="difficulty" value="advanced" class="sr-only peer">
-<<<<<<< HEAD
                                 <div class="p-2.5 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
                                     <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">고급자</p>
                                     <span class="text-[9px] text-slate-400 block mt-0.5">5세트 (85% 1RM)</span>
@@ -779,11 +599,6 @@
                                 <div class="p-3 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all flex flex-col items-center justify-center">
                                     <span class="text-xs font-extrabold text-brand-neonGreen"><i class="fa-solid fa-shoe-prints mr-1"></i> 하체 전용 Day</span>
                                     <span class="text-[9px] text-slate-400 block mt-0.5">최대 10점 제한 볼륨</span>
-=======
-                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard border border-brand-darkBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
-                                    <p class="text-xs font-bold text-white">고급자</p>
-                                    <span class="text-[9px] text-slate-500 block mt-0.5">85~90% 1RM</span>
->>>>>>> parent of 73f2d18 (수정사항)
                                 </div>
                             </label>
                         </div>
@@ -970,7 +785,6 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <!-- Coupang Shopping Redirect banner (Req 5) -->
                 <a href="https://www.coupang.com/np/search?q=닭가슴살" target="_blank" rel="noopener noreferrer" class="mt-4 p-3 rounded-xl border border-brand-red/30 bg-gradient-to-r from-brand-red/15 to-transparent flex items-center justify-between gap-3 hover:border-brand-red/60 transition-all group">
                     <div class="flex items-center gap-3 text-left">
@@ -979,16 +793,9 @@
                             <p class="text-xs font-bold text-slate-700 dark:text-slate-200 light:text-slate-800 group-hover:text-brand-red transition-colors">초보 헬스인 필수 웰니스 추천</p>
                             <p class="text-[10px] text-slate-500">근육 합성에 필요한 신선한 닭가슴살을 빠르게 만나보세요!</p>
                         </div>
-=======
-                <!-- Product recommendation mock banner -->
-                <div class="mt-4 p-3 rounded-xl border border-brand-darkBorder/80 bg-gradient-to-r from-brand-red/10 to-transparent flex items-center gap-3">
-                    <div class="text-xl">🥤</div>
-                    <div class="text-left flex-1">
-                        <p class="text-xs font-bold text-slate-200">초보 헬스인 필수 웰니스 추천</p>
-                        <p class="text-[10px] text-slate-400">자극 완수한 근육에 깨끗한 분리대두단백(WPI)을 충전하세요.</p>
->>>>>>> parent of 73f2d18 (수정사항)
                     </div>
-                </div>
+                    <span class="text-xs font-bold text-brand-red flex items-center gap-1">쿠팡 이동 <i class="fa-solid fa-chevron-right text-[9px] group-hover:translate-x-1 transition-transform"></i></span>
+                </a>
 
                 <!-- Close trigger -->
                 <button id="btn-modal-confirm" class="w-full mt-5 py-3 bg-brand-red text-white font-extrabold rounded-xl hover:bg-red-600 transition-all text-xs">
@@ -998,7 +805,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     <!-- 담백한 타이머 완료 팝업 알림 (Toast Alert - Req 4) -->
     <div id="timer-done-alert" class="fixed bottom-6 right-6 z-50 bg-[#1e1e1e] dark:bg-[#1e1e1e] light:bg-white border border-brand-red rounded-xl p-4 shadow-2xl flex items-center gap-3 max-w-xs transition-all duration-300 transform translate-y-12 opacity-0 pointer-events-none">
         <div class="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red text-base">
@@ -1011,8 +817,6 @@
         <button onclick="closeTimerDoneAlert()" class="text-[10px] font-bold text-brand-red hover:underline self-start">닫기</button>
     </div>
 
-=======
->>>>>>> parent of 73f2d18 (수정사항)
     <!-- Footer -->
     <footer class="bg-black border-t border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 py-8 px-4 lg:px-8 text-center md:text-left">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
@@ -1030,7 +834,6 @@
 
     <!-- Interactive Logic Script -->
     <script>
-<<<<<<< HEAD
         // Comprehensive Gym Equipment Database
         const EQUIPMENT_DATABASE = {
             "chest-press": { name: "머신 체스트 프레스", muscle: "chest", score: 3, isMachine: true },
@@ -1045,23 +848,6 @@
             "calf-raise": { name: "스탠딩 카프레이즈", muscle: "calves", score: 2, isMachine: true },
             "cable-curl": { name: "케이블 암 컬 머신", muscle: "biceps", score: 2, isMachine: true },
             "cable-pushdown": { name: "케이블 푸쉬다운", muscle: "triceps", score: 2, isMachine: true }
-=======
-        // 1. Comprehensive Gym Equipment and Free-Weight Database (Divided into Upper and Lower, each with designated muscle targets & score value weights)
-        const EQUIPMENT_DATABASE = {
-            // Machines
-            "chest-press": { name: "머신 체스트 프레스", muscle: "chest", score: 3, cat: "upper", isMachine: true },
-            "pec-deck": { name: "펙덱 플라이 머신", muscle: "chest", score: 2, cat: "upper", isMachine: true },
-            "lat-pulldown": { name: "머신 렛풀다운", muscle: "back", score: 3, cat: "upper", isMachine: true },
-            "cable-row": { name: "시티드 케이블 로우", muscle: "back", score: 3, cat: "upper", isMachine: true },
-            "shoulder-press": { name: "머신 숄더 프레스", muscle: "shoulders", score: 3, cat: "upper", isMachine: true },
-            "lateral-raise": { name: "레터럴 레이즈 머신", muscle: "shoulders", score: 2, cat: "upper", isMachine: true },
-            "leg-extension": { name: "레그 익스텐션", muscle: "quads", score: 2, cat: "lower", isMachine: true },
-            "leg-press": { name: "레그 프레스 머신", muscle: "quads", score: 3, cat: "lower", isMachine: true },
-            "leg-curl": { name: "라잉 레그 컬", muscle: "hamstrings", score: 2, cat: "lower", isMachine: true },
-            "calf-raise": { name: "스탠딩 카프레이즈", muscle: "calves", score: 2, cat: "lower", isMachine: true },
-            "cable-curl": { name: "케이블 암 컬 머신", muscle: "biceps", score: 2, cat: "upper", isMachine: true },
-            "cable-pushdown": { name: "케이블 푸쉬다운", muscle: "triceps", score: 2, cat: "upper", isMachine: true }
->>>>>>> parent of 73f2d18 (수정사항)
         };
 
         // Free Weight Fallbacks to guarantee complete workouts
@@ -1127,6 +913,7 @@
         function setupAnatomicalMapInteractions() {
             const muscles = document.querySelectorAll('.muscle-hover');
             const linkedCards = document.querySelectorAll('.muscle-link-card');
+            const indicator = document.getElementById('active-muscle-indicator');
 
             muscles.forEach(muscle => {
                 const targetName = muscle.getAttribute('data-muscle');
@@ -1134,19 +921,13 @@
                 muscle.addEventListener('mouseenter', () => {
                     activateMuscleGraphic(targetName);
                     highlightLinkedCard(targetName);
-<<<<<<< HEAD
                     indicator.innerText = `현재 자극 부위: ${getMuscleNameKorean(targetName)}`;
-=======
->>>>>>> parent of 73f2d18 (수정사항)
                 });
 
                 muscle.addEventListener('mouseleave', () => {
                     deactivateMuscleGraphic(targetName);
                     unhighlightLinkedCard(targetName);
-<<<<<<< HEAD
                     indicator.innerText = "지도를 탐색해 보세요";
-=======
->>>>>>> parent of 73f2d18 (수정사항)
                 });
             });
 
@@ -1156,19 +937,13 @@
                 card.addEventListener('mouseenter', () => {
                     activateMuscleGraphic(targetName);
                     card.classList.add('border-brand-red', 'bg-brand-red/5');
-<<<<<<< HEAD
                     indicator.innerText = `현재 자극 부위: ${getMuscleNameKorean(targetName)}`;
-=======
->>>>>>> parent of 73f2d18 (수정사항)
                 });
 
                 card.addEventListener('mouseleave', () => {
                     deactivateMuscleGraphic(targetName);
                     card.classList.remove('border-brand-red', 'bg-brand-red/5');
-<<<<<<< HEAD
                     indicator.innerText = "지도를 탐색해 보세요";
-=======
->>>>>>> parent of 73f2d18 (수정사항)
                 });
             });
         }
@@ -1241,7 +1016,7 @@
             });
         }
 
-        // Primary Generation Calculation Algorithm (Modification 4)
+        // Primary Generation Calculation Algorithm
         function generateRoutine() {
             const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
             const splitSelected = document.querySelector('input[name="routine-split"]:checked').value;
@@ -1254,21 +1029,20 @@
             let restSeconds = 90;
             let levelLabel = "초급자 가이드";
             let repsLabel = "12-15회";
-<<<<<<< HEAD
             let setsValue = 3;
-=======
->>>>>>> parent of 73f2d18 (수정사항)
 
             if (difficulty === "intermediate") {
                 intensityPct = "75%";
                 restSeconds = 120;
                 levelLabel = "중급자 가이드";
                 repsLabel = "10-12회";
+                setsValue = 4;
             } else if (difficulty === "advanced") {
                 intensityPct = "85%";
                 restSeconds = 150;
                 levelLabel = "고급자 가이드";
                 repsLabel = "5-8회";
+                setsValue = 5;
             }
 
             document.getElementById('badge-difficulty').innerText = levelLabel;
@@ -1337,7 +1111,6 @@
             const totalDurationEst = Math.round(totalSetsCalculated * singleSetDurationMinutes);
             document.getElementById('text-est-time').innerText = `약 ${totalDurationEst}분`;
 
-<<<<<<< HEAD
             // Display split scores
             document.getElementById('split-score-badge').innerText = `${currentDayScore}점 / 10점`;
             document.getElementById('volume-diagnostic-score').innerText = `${currentDayScore}점 / 10점`;
@@ -1391,49 +1164,6 @@
                     outputContainer.insertAdjacentHTML('beforeend', cardHtml);
                 });
             }
-=======
-            // Draw UPPER routine Cards
-            if (selectedUpperRoutines.length === 0) {
-                upperContainer.innerHTML = '<p class="text-[10px] text-slate-500 text-center py-4">기구 선택 또는 프리웨이트 조합이 비어있습니다.</p>';
-            } else {
-                selectedUpperRoutines.forEach(ex => {
-                    const cardHtml = makeRoutineCardHtml(ex, repsLabel, intensityPct);
-                    upperContainer.insertAdjacentHTML('beforeend', cardHtml);
-                });
-            }
-
-            // Draw LOWER routine Cards
-            if (selectedLowerRoutines.length === 0) {
-                lowerContainer.innerHTML = '<p class="text-[10px] text-slate-500 text-center py-4">기구 선택 또는 프리웨이트 조합이 비어있습니다.</p>';
-            } else {
-                selectedLowerRoutines.forEach(ex => {
-                    const cardHtml = makeRoutineCardHtml(ex, repsLabel, intensityPct);
-                    lowerContainer.insertAdjacentHTML('beforeend', cardHtml);
-                });
-            }
-        }
-
-        // Helper function to render modern routine card
-        function makeRoutineCardHtml(ex, repsLabel, intensityPct) {
-            return `
-                <div class="p-2.5 rounded-lg bg-black/40 border border-brand-darkBorder/80 hover:border-brand-red/30 transition-all flex flex-col gap-1 group">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full ${ex.cat === 'upper' ? 'bg-brand-neonBlue' : 'bg-brand-neonGreen'}"></span>
-                            <span class="text-[11px] font-bold text-white group-hover:text-brand-red transition-colors leading-none">${ex.name}</span>
-                        </div>
-                        <span class="px-1 py-0.2 bg-brand-darkBorder text-slate-400 text-[8px] rounded uppercase font-bold scale-90">
-                            ${ex.isMachine ? '머신' : '프리'}
-                        </span>
-                    </div>
-                    <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-brand-darkBorder/40 pt-1 mt-0.5">
-                        <span>자극 부위: <span class="text-slate-300 font-bold">${getMuscleNameKorean(ex.muscle)}</span></span>
-                        <span class="text-brand-red font-semibold">${repsLabel} × ${intensityPct} 1RM</span>
-                    </div>
-                    <div class="text-[9px] text-slate-500 text-right font-medium">자극 강점 점수: +${ex.score}점</div>
-                </div>
-            `;
->>>>>>> parent of 73f2d18 (수정사항)
         }
 
         function getMuscleNameKorean(eng) {
@@ -1480,17 +1210,14 @@
                     if (currentSec <= 0) {
                         clearInterval(timerInterval);
                         isTimerRunning = false;
-                        document.getElementById('timer-display').innerText = "휴식 완료! 다음 세트 진행";
+                        document.getElementById('timer-display').innerText = "휴식 완료!";
                         btnTimer.innerText = "시작";
-<<<<<<< HEAD
                         
                         // Auto Reset Timer to duration
                         resetCountdownUI();
                         
                         // Dispatch subtle custom toast pop alert (Req 4)
                         triggerTimerDoneAlert();
-=======
->>>>>>> parent of 73f2d18 (수정사항)
                     }
                 }, 1000);
             }
@@ -1500,7 +1227,6 @@
             document.getElementById('timer-display').innerText = `${timerDuration}초 대기`;
         }
 
-<<<<<<< HEAD
         function triggerTimerDoneAlert() {
             const toast = document.getElementById('timer-done-alert');
             toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
@@ -1519,10 +1245,6 @@
         }
 
         // Wellness modal triggers (Req 5: 쿠팡 단백질 닭가슴살 바로가기 추가)
-=======
-
-        // Wellness modal triggers
->>>>>>> parent of 73f2d18 (수정사항)
         function setupWellnessModal() {
             const completeBtn = document.getElementById('btn-complete-routine');
             const modal = document.getElementById('wellness-modal');
