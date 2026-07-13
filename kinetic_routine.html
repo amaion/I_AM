@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-smooth">
+<html lang="ko" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KINETIC ROUTINE - 자극을 눈으로 보고, 루틴을 몸으로 느끼다</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Inter) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Inter & Pretendard) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -22,6 +23,9 @@
                             darkBg: '#121212',
                             darkCard: '#1F1F1F',
                             darkBorder: '#2A2A2A',
+                            lightBg: '#FFFFFF',
+                            lightCard: '#FFFFFF',
+                            lightBorder: '#E2E8F0',
                             neonGreen: '#10B981',
                             neonBlue: '#00E5FF'
                         }
@@ -34,9 +38,9 @@
         }
     </script>
     <style>
+        /* Modern Neomorphic & Cyber Aesthetic Styling */
         body {
-            background-color: #121212;
-            color: #E2E8F0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .neon-shadow-red {
             box-shadow: 0 0 15px rgba(255, 75, 43, 0.45);
@@ -45,13 +49,23 @@
             border-color: #FF4B2B;
             box-shadow: 0 0 10px rgba(255, 75, 43, 0.5);
         }
-        /* Muscle active styling for the overlay over image_f22435.png */
+        
+        /* Grayscale transformation for image_fd8ce2.jpg as requested */
+        .anatomy-grayscale-bg {
+            filter: grayscale(100%) contrast(1.1) brightness(0.75);
+            transition: all 0.5s ease;
+        }
+        .light .anatomy-grayscale-bg {
+            filter: grayscale(100%) contrast(1.0) brightness(0.95);
+        }
+
+        /* Muscle active styling over image_fd8ce2.jpg */
         .muscle-active {
-            fill: rgba(255, 75, 43, 0.65) !important;
+            fill: rgba(255, 75, 43, 0.7) !important;
             stroke: #FF4B2B !important;
-            stroke-width: 1.5px;
-            filter: drop-shadow(0px 0px 8px rgba(255, 75, 43, 0.9));
-            transition: all 0.3s ease;
+            stroke-width: 2px;
+            filter: drop-shadow(0px 0px 10px rgba(255, 75, 43, 0.95));
+            transition: all 0.25s ease;
         }
         .muscle-hover {
             fill: transparent;
@@ -62,50 +76,87 @@
         .muscle-hover:hover {
             fill: rgba(255, 75, 43, 0.45);
             stroke: #FF4B2B;
-            stroke-width: 1px;
+            stroke-width: 1.5px;
         }
+
+        /* Custom css to crop text and apply red coloring to image_fd7de0.jpg pictograms */
+        .sprite-container {
+            width: 76px;
+            height: 72px;
+            overflow: hidden;
+            position: relative;
+            background: transparent;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .sprite-img {
+            position: absolute;
+            max-width: none;
+            /* Invert black to Neon Brand Red (#FF4B2B) */
+            filter: invert(39%) sepia(85%) saturate(5427%) hue-rotate(348deg) brightness(101%) contrast(101%);
+            transition: transform 0.2s ease;
+        }
+
+        /* Kinetic grid lines */
         .kinetic-grid {
-            background-image: linear-gradient(rgba(255, 75, 43, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 75, 43, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(255, 75, 43, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 75, 43, 0.02) 1px, transparent 1px);
             background-size: 30px 30px;
         }
+        
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #121212;
+            background: transparent;
         }
         ::-webkit-scrollbar-thumb {
             background: #2A2A2A;
             border-radius: 4px;
+        }
+        .light ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #FF4B2B;
         }
     </style>
 </head>
-<body class="kinetic-grid antialiased selection:bg-brand-red selection:text-white">
+<body class="kinetic-grid antialiased selection:bg-brand-red selection:text-white bg-brand-darkBg text-slate-200 dark:bg-brand-darkBg dark:text-slate-200 light:bg-brand-lightBg light:text-slate-800">
 
     <!-- GNB / Header -->
-    <header class="sticky top-0 z-40 bg-brand-darkBg/90 backdrop-blur-md border-b border-brand-darkBorder px-4 py-3 lg:px-8">
+    <header class="sticky top-0 z-40 bg-brand-darkBg/90 dark:bg-brand-darkBg/90 light:bg-brand-lightBg/90 backdrop-blur-md border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder px-4 py-3 lg:px-8">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#" class="flex items-center space-x-2">
-                <span class="text-2xl font-black tracking-wider text-brand-red">KINETIC<span class="text-white font-light">ROUTINE</span></span>
+                <span class="text-2xl font-black tracking-wider text-brand-red">KINETIC<span class="text-slate-800 dark:text-white light:text-slate-800 font-light">ROUTINE</span></span>
             </a>
+            
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#interactive-map" class="hover:text-brand-red transition-colors text-slate-300">자극 부위 지도</a>
-                <a href="#routine-builder" class="hover:text-brand-red transition-colors text-slate-300">커스텀 루틴 빌더</a>
-                <a href="#strength-cards" class="hover:text-brand-red transition-colors text-slate-300">자극 솔루션 강점</a>
+                <a href="#interactive-map" class="hover:text-brand-red transition-colors text-slate-400 dark:text-slate-300 light:text-slate-600">자극 부위 지도</a>
+                <a href="#routine-builder" class="hover:text-brand-red transition-colors text-slate-400 dark:text-slate-300 light:text-slate-600">커스텀 루틴 빌더</a>
+                <a href="#strength-cards" class="hover:text-brand-red transition-colors text-slate-400 dark:text-slate-300 light:text-slate-600">자극 솔루션 강점</a>
             </nav>
-            <a href="#routine-builder" class="px-4 py-2 bg-brand-red text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-red-600 transition-all duration-300 neon-shadow-red flex items-center gap-1">
-                루틴 생성하기 <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
+            
+            <div class="flex items-center gap-4">
+                <!-- Theme Mode Toggle Switch -->
+                <button id="btn-theme-toggle" class="p-2 rounded-lg bg-brand-darkCard dark:bg-brand-darkCard light:bg-slate-200 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-300 text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-brand-red transition-all" title="화면 모드 전환">
+                    <i class="fa-solid fa-moon dark:inline-block hidden"></i>
+                    <i class="fa-solid fa-sun light:inline-block hidden"></i>
+                </button>
+
+                <a href="#routine-builder" class="px-4 py-2 bg-brand-red text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-red-600 transition-all duration-300 neon-shadow-red flex items-center gap-1">
+                    루틴 생성 <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[95vh] flex flex-col justify-center px-4 py-12 lg:px-8 overflow-hidden border-b border-brand-darkBorder">
-        <div class="absolute inset-0 bg-gradient-to-b from-brand-red/5 via-transparent to-brand-darkBg pointer-events-none"></div>
+    <!-- Hero & Interactive Map Section -->
+    <section class="relative min-h-[95vh] flex flex-col justify-center px-4 py-12 lg:px-8 overflow-hidden border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-red/5 via-transparent to-transparent pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <!-- Left Side: Interactive Catchphrase & Introduction -->
@@ -113,51 +164,62 @@
                 <span class="inline-flex items-center justify-center lg:justify-start gap-1.5 px-3 py-1 bg-brand-red/10 border border-brand-red/20 rounded-full text-brand-red text-xs font-bold tracking-wide w-fit mx-auto lg:mx-0 mb-6 uppercase">
                     <span class="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse"></span> Target: 초보 헬스인 맞춤 가이드
                 </span>
-                <h1 class="text-4xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+                <h1 class="text-4xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-4 text-slate-800 dark:text-white light:text-slate-800">
                     자극을 <span class="text-brand-red underline decoration-brand-red/30 underline-offset-4">눈으로</span> 보고,<br>
                     루틴을 <span class="text-brand-red underline decoration-brand-red/30 underline-offset-4">몸으로</span> 느끼다.
                 </h1>
-                <p class="text-slate-400 text-sm sm:text-base max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
-                    어떤 기구를 써야 할지 모르는 입문자를 위해, 앞/뒤 정밀 매핑 지도를 구현했습니다. 헬스장 기구에 맞는 과학적인 상/하체 2분할 점수제 루틴을 지금 바로 설계하세요.
+                <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-sm sm:text-base max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
+                    어떤 기구를 써야 할지 모르는 입문자를 위해, 앞/뒤 정밀 매핑 지도를 구현했습니다. 보유 기구를 고르면 상/하체 2분할 한계 세트 산출 공식이 자동으로 적용됩니다.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <a href="#routine-builder" class="px-6 py-4 bg-brand-red text-white font-bold rounded-xl hover:bg-red-600 transition-all duration-300 text-center neon-shadow-red flex items-center justify-center gap-2">
                         <i class="fa-solid fa-dumbbell"></i> 내 기구로 2분할 루틴 짜기
                     </a>
-                    <a href="#interactive-map" class="px-6 py-4 bg-brand-darkCard text-slate-300 font-bold rounded-xl border border-brand-darkBorder hover:border-brand-red/50 hover:text-white transition-all duration-300 text-center flex items-center justify-center gap-2">
+                    <a href="#interactive-map" class="px-6 py-4 bg-brand-darkCard dark:bg-brand-darkCard light:bg-slate-100 text-slate-300 dark:text-slate-300 light:text-slate-700 font-bold rounded-xl border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-300 hover:border-brand-red/50 hover:text-brand-red transition-all duration-300 text-center flex items-center justify-center gap-2">
                         9대 자극 부위 확인하기 <i class="fa-solid fa-magnifying-glass"></i>
                     </a>
                 </div>
             </div>
 
             <!-- Right Side: SVG Dynamic Muscle Interactive Map -->
-            <div id="interactive-map" class="lg:col-span-7 bg-brand-darkCard/80 border border-brand-darkBorder p-5 sm:p-6 rounded-2xl relative">
-                <div class="absolute top-4 right-4 bg-black/40 border border-brand-darkBorder px-3 py-1 rounded-lg text-[10px] text-slate-400 flex items-center gap-1.5">
-                    <i class="fa-solid fa-circle-info text-brand-red"></i> 인체 부위 또는 리스트에 마우스를 대보세요
+            <div id="interactive-map" class="lg:col-span-7 bg-brand-darkCard/80 dark:bg-brand-darkCard/80 light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder p-5 sm:p-6 rounded-2xl relative">
+                <div class="absolute top-4 right-4 bg-black/40 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 px-3 py-1 rounded-lg text-[10px] text-slate-400 light:text-slate-600 flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-info text-brand-red"></i> 인체 부위 또는 우측 리스트에 마우스를 대보세요
                 </div>
-                <h3 class="text-lg font-bold mb-1 flex items-center gap-2">
+                <h3 class="text-lg font-bold mb-1 flex items-center gap-2 text-slate-800 dark:text-white light:text-slate-800">
                     <span class="w-2.5 h-2.5 bg-brand-red rounded-full"></span> 양방향 시각 자극 지도
                 </h3>
-                <p class="text-slate-400 text-xs mb-4">정밀 앞·뒤 9대 타겟 부위 연동 시스템</p>
+                <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs mb-4">정밀 앞·뒤 9대 타겟 부위 연동 시스템 (글씨 라벨이 지워진 흑백 해부도 매핑)</p>
 
                 <!-- Current Active Muscle Tracker Overlay -->
-                <div class="bg-black/40 border border-brand-darkBorder rounded-xl p-3 mb-4 flex items-center justify-between">
-                    <span class="text-xs text-slate-400">탐색 중인 근육 부위</span>
-                    <span id="active-muscle-indicator" class="text-xs font-extrabold text-brand-red tracking-wider">지도에 마우스를 올려주세요</span>
+                <div class="bg-black/40 dark:bg-black/40 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 rounded-xl p-3 mb-4 flex items-center justify-between">
+                    <span class="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 font-semibold">탐색 중인 근육 부위</span>
+                    <span id="active-muscle-indicator" class="text-xs font-extrabold text-brand-red tracking-wider">지도를 탐색해 보세요</span>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <!-- SVG Dual Anatomical Map Overlaying image_f22435.png -->
+                    
+                    <!-- Cropped Grayscale Anatomical Body Silhouette Area -->
                     <div class="md:col-span-7 flex justify-center">
-                        <div class="relative w-full max-w-[340px] md:max-w-none h-[340px] bg-black/30 rounded-xl p-2 flex justify-center items-center overflow-hidden">
-                            <!-- Background Image from reference image_f22435.png -->
-                            <img src="image_f22435.png" alt="Anatomical Muscle Structure" class="absolute inset-0 w-full h-full object-contain pointer-events-none p-1" onerror="this.onerror=null; this.src='https://placehold.co/340x340/1f1f1f/ff4b2b?text=Anatomy+Map'" />
+                        <div class="relative w-full max-w-[340px] md:max-w-none h-[350px] bg-black/20 dark:bg-black/20 light:bg-slate-100 rounded-xl p-2 flex justify-center items-center overflow-hidden border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200">
                             
-                            <!-- Responsive SVG Overlay perfectly matching the image_f22435 front/back layout coordinates -->
-                            <svg id="humanoid-dual-svg" viewBox="0 0 440 380" class="w-full h-full max-h-[320px] relative z-10">
+                            <!-- Double Silhouettes side-by-side using image_fd8ce2.jpg mapped inside container -->
+                            <div class="absolute inset-0 flex justify-between px-6 pointer-events-none">
+                                <!-- FRONT SILHOUETTE Grayscale Crop -->
+                                <div class="w-[125px] h-[330px] overflow-hidden relative self-center">
+                                    <img src="image_fdf59c.jpg" alt="Anatomy Front" class="anatomy-grayscale-bg absolute max-w-none w-[120px]" style="left: 0px; top: 0px;" onerror="this.onerror=null; this.src='https://placehold.co/360x400/1f1f1f/ff4b2b?text=Anatomy+Map'" />
+                                </div>
+                                <!-- BACK SILHOUETTE Grayscale Crop -->
+                                <div class="w-[125px] h-[330px] overflow-hidden relative self-center">
+                                    <img src="image_fd8ce2.jpg" alt="Anatomy Back" class="anatomy-grayscale-bg absolute max-w-none w-[360px]" style="left: -200px; top: -14px;" onerror="this.onerror=null; this.src='https://placehold.co/360x400/1f1f1f/ff4b2b?text=Anatomy+Map'" />
+                                </div>
+                            </div>
+                            
+                            <!-- SVG overlay aligning perfectly with the two cropped body silhouettes -->
+                            <svg id="humanoid-dual-svg" viewBox="0 0 440 380" class="w-full h-full max-h-[330px] relative z-10">
                                 <!-- LEFT SILHOUETTE OVERLAY (FRONT) -->
                                 <g transform="translate(10, 0)">
-                                    <!-- 1. 어깨 (Shoulders - front/side) -->
+                                    <!-- 1. 어깨 (Shoulders - front) -->
                                     <path id="muscle-shoulders-front-l" class="muscle-hover" d="M68,105 C62,111 60,123 65,133 L71,130 C69,120 73,110 76,104 Z" data-muscle="shoulders" />
                                     <path id="muscle-shoulders-front-r" class="muscle-hover" d="M132,105 C138,111 140,123 135,133 L129,130 C131,120 127,110 124,104 Z" data-muscle="shoulders" />
 
@@ -187,10 +249,10 @@
                                     <path id="muscle-triceps-l" class="muscle-hover" d="M58,138 C55,148 53,160 52,172 L58,172 C59,160 61,148 63,138 Z" data-muscle="triceps" />
                                     <path id="muscle-triceps-r" class="muscle-hover" d="M142,138 C145,148 147,160 148,172 L142,172 C141,160 139,148 137,138 Z" data-muscle="triceps" />
 
-                                    <!-- 3. 등 (Back / Latissimus) -->
+                                    <!-- 3. 등 (Back) -->
                                     <path id="muscle-back" class="muscle-hover" d="M74,130 L126,130 L120,192 L80,192 Z" data-muscle="back" />
 
-                                    <!-- 4. 대퇴이두근 (Hamstrings - 허벅지 뒤) -->
+                                    <!-- 4. 대퇴이두근 (Hamstrings - 뒷벅지) -->
                                     <path id="muscle-hamstrings-l" class="muscle-hover" d="M79,215 C76,233 78,258 86,278 L94,275 C90,255 88,233 88,215 Z" data-muscle="hamstrings" />
                                     <path id="muscle-hamstrings-r" class="muscle-hover" d="M121,215 C124,233 122,258 114,278 L106,275 C110,255 112,233 112,215 Z" data-muscle="hamstrings" />
 
@@ -203,124 +265,61 @@
                     </div>
 
                     <!-- Right Muscle Linked Exercises list -->
-                    <div class="md:col-span-5 space-y-2 max-h-[340px] overflow-y-auto pr-1">
-                        <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1 border-b border-brand-darkBorder pb-1">근육 타겟 리스트 (9개 세분화)</div>
+                    <div class="md:col-span-5 space-y-2 max-h-[350px] overflow-y-auto pr-1">
+                        <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1 border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 pb-1">근육 타겟 리스트 (9대 부위)</div>
                         
-                        <!-- 1. 가슴 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="chest">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M4 11h16v2H4zm0-4h16v2H4zm0 8h16v2H4z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">대흉근 (가슴)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT</span>
+                        <!-- Chest Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="chest">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">대흉근 (가슴)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Front</span>
                         </div>
 
-                        <!-- 2. 어깨 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="shoulders">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><circle cx="12" cy="5" r="2"/><path d="M4 10h16v2H4zm8 3c-2.2 0-4 1.8-4 4h8c0-2.2-1.8-4-4-4z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">삼각근 (어깨)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT/BACK</span>
+                        <!-- Shoulders Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="shoulders">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">삼각근 (어깨)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Front/Back</span>
                         </div>
 
-                        <!-- 3. 이두 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="biceps">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10H12V2z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">상완이두근 (이두)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT</span>
+                        <!-- Biceps Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="biceps">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">상완이두근 (이두)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Front</span>
                         </div>
 
-                        <!-- 4. 삼두 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="triceps">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 14h-2v-6h2v6z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">상완삼두근 (삼두)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">BACK</span>
+                        <!-- Triceps Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="triceps">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">상완삼두근 (삼두)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Back</span>
                         </div>
 
-                        <!-- 5. 등 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="back">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M12 2L2 22h20L12 2zm0 4l6 12H6L12 6z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">광배근 & 등 (등)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">BACK</span>
+                        <!-- Back Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="back">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">광배근 & 등 (등)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Back</span>
                         </div>
 
-                        <!-- 6. 배 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="abs">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M4 4h16v4H4V4zm0 6h16v4H4v-4zm0 6h16v4H4v-4z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">복직근 (배)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT</span>
+                        <!-- Abs Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="abs">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">복직근 (배)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Front</span>
                         </div>
 
-                        <!-- 7. 대퇴사두근 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="quads">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M12 2c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V4c0-1.1.9-2 2-2zm0 15c1.1 0 2 .9 2 2v1c0 1.1-.9 2-2 2s-2-.9-2-2v-1c0-1.1.9-2 2-2z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">대퇴사두근 (앞벅지)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">FRONT</span>
+                        <!-- Quads Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="quads">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">대퇴사두근 (앞벅지)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Front</span>
                         </div>
 
-                        <!-- 8. 대퇴이두근 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="hamstrings">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M16 4H8v16h8V4zM10 6h4v12h-4V6z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">대퇴이두근 (뒷벅지)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">BACK</span>
+                        <!-- Hamstrings Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="hamstrings">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">대퇴이두근 (뒷벅지)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Back</span>
                         </div>
 
-                        <!-- 9. 종아리 -->
-                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 border border-brand-darkBorder hover:border-brand-red/40 transition-all cursor-pointer flex justify-between items-center group" data-muscle="calves">
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red">
-                                    <svg viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M5 2h14v2H5zm0 18h14v2H5zm2-14h10v10H7z"/></svg>
-                                </div>
-                                <div>
-                                    <h4 class="text-xs font-semibold group-hover:text-white text-slate-200">비복근 (종아리)</h4>
-                                </div>
-                            </div>
-                            <span class="text-[10px] text-slate-500 font-bold">BACK</span>
+                        <!-- Calves Card -->
+                        <div class="muscle-link-card p-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-slate-50 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/50 transition-all cursor-pointer flex justify-between items-center group" data-muscle="calves">
+                            <span class="text-xs font-semibold text-slate-700 dark:text-slate-200 light:text-slate-700">비복근 (종아리)</span>
+                            <span class="text-[9px] px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded font-bold uppercase">Back</span>
                         </div>
 
                     </div>
@@ -330,7 +329,7 @@
     </section>
 
     <!-- Custom Routine Builder Section -->
-    <section id="routine-builder" class="py-16 px-4 lg:px-8 border-b border-brand-darkBorder bg-[#161616]">
+    <section id="routine-builder" class="py-16 px-4 lg:px-8 border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder bg-[#161616] dark:bg-[#161616] light:bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 
@@ -338,318 +337,214 @@
                 <div class="lg:col-span-5 space-y-6">
                     <div>
                         <span class="text-brand-red text-xs font-bold tracking-widest uppercase">STEP-BY-STEP BUILDER</span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 tracking-tight text-white">커스텀 루틴 빌더</h2>
-                        <p class="text-slate-400 text-xs mt-1">우리 동네 헬스장의 보유 기구들을 편하게 골라 체크해보세요.</p>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 tracking-tight text-slate-800 dark:text-white light:text-slate-800">커스텀 루틴 빌더</h2>
+                        <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs mt-1">우리 동네 헬스장의 보유 기구들을 편하게 골라 체크해보세요.</p>
                     </div>
 
                     <!-- Step 1: Equipment Selection -->
                     <div class="space-y-3">
                         <div class="flex justify-between items-center">
-                            <h4 class="text-xs font-semibold tracking-wide text-slate-300 uppercase flex items-center gap-2">
-                                <span class="text-brand-red font-bold">01.</span> 우리 헬스장 기구 체크 (픽토그램)
+                            <h4 class="text-xs font-semibold tracking-wide text-slate-600 dark:text-slate-300 light:text-slate-700 uppercase flex items-center gap-2">
+                                <span class="text-brand-red font-bold">01.</span> 우리 헬스장 기구 체크 (레드 픽토그램 가공)
                             </h4>
                             <button id="btn-clear-equip" class="text-[10px] text-slate-500 hover:text-brand-red transition-colors flex items-center gap-1">
                                 <i class="fa-solid fa-rotate-left"></i> 기구 초기화
                             </button>
                         </div>
-                        <p class="text-[10px] text-slate-500 leading-relaxed">아무 기구도 체크하지 않을 시 바벨, 덤벨 등 핵심 프리웨이트 중심 루틴이 상/하체 안전 배율에 맞춰 구성됩니다.</p>
+                        <p class="text-[10px] text-slate-500 light:text-slate-500 leading-relaxed">아무 기구도 체크하지 않을 시 바벨, 덤벨 등 핵심 프리웨이트 중심 루틴이 분할별 안전 배율에 맞춰 구성됩니다.</p>
                         
-                        <!-- 12-Diverse Equipments Grid with image_f2a435 Lifting-style Pictograms -->
+                        <!-- 12-Diverse Equipments Grid mapped using image_fd7de0.jpg -->
                         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-2" id="equipments-grid">
                             
                             <!-- 1. Chest Press -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="chest-press">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="chest-press">
                                 <div class="flex items-center justify-between">
-                                    <!-- Gym Lift Icon (Bench Press / Chest Press Style Pictogram) -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Bench Line -->
-                                        <line x1="8" y1="48" x2="56" y2="48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                                        <line x1="20" y1="48" x2="20" y2="56" stroke="currentColor" stroke-width="4"/>
-                                        <line x1="44" y1="48" x2="44" y2="56" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Lifter Silhouette -->
-                                        <circle cx="32" cy="24" r="5"/>
-                                        <path d="M22,36 L42,36 M26,36 L26,48 M38,36 L38,48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                                        <!-- Barbell Overhead/Chest level -->
-                                        <line x1="12" y1="20" x2="52" y2="20" stroke="currentColor" stroke-width="3"/>
-                                        <rect x="8" y="16" width="4" height="8" rx="1"/>
-                                        <rect x="52" y="16" width="4" height="8" rx="1"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -10px; top: -10px;" alt="Chest Press Pictogram" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">체스트 프레스</p>
-                                    <span class="text-[9px] text-slate-500">가슴 (3점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">체스트 프레스</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">가슴 (대근육 • +3점)</span>
                                 </div>
                             </div>
 
                             <!-- 2. Pec Deck Fly -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="pec-deck">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="pec-deck">
                                 <div class="flex items-center justify-between">
-                                    <!-- Seated Fly Pictogram -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Machine Frame -->
-                                        <path d="M12,56 L12,12 L52,12 L52,56" fill="none" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Seated Figure -->
-                                        <circle cx="32" cy="22" r="5"/>
-                                        <line x1="32" y1="27" x2="32" y2="44" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Handles & Arms -->
-                                        <path d="M18,32 L26,32 L32,34 L38,32 L46,32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -102px; top: -10px;" alt="Pec Deck Fly" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">펙덱 플라이</p>
-                                    <span class="text-[9px] text-slate-500">가슴 안쪽 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">펙덱 플라이</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">가슴 안쪽 (보조 • +2점)</span>
                                 </div>
                             </div>
 
                             <!-- 3. Lat Pulldown -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="lat-pulldown">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="lat-pulldown">
                                 <div class="flex items-center justify-between">
-                                    <!-- Pulldown Action Pictogram -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- High Bar -->
-                                        <line x1="12" y1="12" x2="52" y2="12" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Pulldown Bar -->
-                                        <line x1="20" y1="24" x2="44" y2="24" stroke="currentColor" stroke-width="3"/>
-                                        <!-- Cables -->
-                                        <line x1="22" y1="12" x2="22" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/>
-                                        <line x1="42" y1="12" x2="42" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/>
-                                        <!-- Active Seated Person -->
-                                        <circle cx="32" cy="28" r="4.5"/>
-                                        <path d="M24,24 L32,32 L40,24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <line x1="32" y1="32" x2="32" y2="46" stroke="currentColor" stroke-width="4"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -195px; top: -10px;" alt="Lat Pulldown" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">렛풀다운</p>
-                                    <span class="text-[9px] text-slate-500">광배/등 (3점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">렛풀다운</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">광배/등 (대근육 • +3점)</span>
                                 </div>
                             </div>
 
                             <!-- 4. Seated Cable Row -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-row">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-row">
                                 <div class="flex items-center justify-between">
-                                    <!-- Seated Row Row-machine Style -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Footer/Base frame -->
-                                        <line x1="8" y1="52" x2="56" y2="52" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Pulley structure -->
-                                        <line x1="50" y1="24" x2="50" y2="52" stroke="currentColor" stroke-width="3"/>
-                                        <circle cx="50" cy="24" r="3"/>
-                                        <!-- Cable Line -->
-                                        <line x1="26" y1="36" x2="50" y2="24" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/>
-                                        <!-- Person leaning/pulling -->
-                                        <circle cx="20" cy="28" r="5"/>
-                                        <path d="M14,48 L22,40 L26,36" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -10px; top: -115px;" alt="Cable Row" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">시티드 케이블로우</p>
-                                    <span class="text-[9px] text-slate-500">등 전체 (3점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">시티드 케이블 로우</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">등 전체 (대근육 • +3점)</span>
                                 </div>
                             </div>
 
                             <!-- 5. Shoulder Press -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="shoulder-press">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="shoulder-press">
                                 <div class="flex items-center justify-between">
-                                    <!-- Overhead Barbeller Style (Close to image_f2a435) -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Lifter Standing Body -->
-                                        <circle cx="32" cy="22" r="5"/>
-                                        <line x1="32" y1="27" x2="32" y2="48" stroke="currentColor" stroke-width="4"/>
-                                        <line x1="24" y1="48" x2="24" y2="58" stroke="currentColor" stroke-width="4"/>
-                                        <line x1="40" y1="48" x2="40" y2="58" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Arms Raised holding bar -->
-                                        <path d="M22,34 L32,24 L42,34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <!-- Overhead Barbell -->
-                                        <line x1="12" y1="14" x2="52" y2="14" stroke="currentColor" stroke-width="4"/>
-                                        <circle cx="12" cy="14" r="4"/>
-                                        <circle cx="52" cy="14" r="4"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -125px; top: -115px;" alt="Shoulder Press" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">머신 숄더프레스</p>
-                                    <span class="text-[9px] text-slate-500">어깨 (3점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">머신 숄더프레스</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">어깨 (대근육 • +3점)</span>
                                 </div>
                             </div>
 
                             <!-- 6. Lateral Raise Machine -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="lateral-raise">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="lateral-raise">
                                 <div class="flex items-center justify-between">
-                                    <!-- Lateral Dumbbell Raise Side movement -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <circle cx="32" cy="20" r="5"/>
-                                        <line x1="32" y1="25" x2="32" y2="50" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Lateral Arms extended parallel to ground -->
-                                        <line x1="12" y1="26" x2="52" y2="26" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <!-- Small Weights on ends -->
-                                        <circle cx="12" cy="26" r="3"/>
-                                        <circle cx="52" cy="26" r="3"/>
-                                        <line x1="24" y1="50" x2="20" y2="60" stroke="currentColor" stroke-width="4"/>
-                                        <line x1="40" y1="50" x2="44" y2="60" stroke="currentColor" stroke-width="4"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -260px; top: -115px;" alt="Lateral Raise" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">레터럴레이즈 머신</p>
-                                    <span class="text-[9px] text-slate-500">측면어깨 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">레터럴레이즈 머신</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">측면어깨 (보조 • +2점)</span>
                                 </div>
                             </div>
 
                             <!-- 7. Leg Extension -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-extension">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-extension">
                                 <div class="flex items-center justify-between">
-                                    <!-- Seated Leg Extension -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Chair Frame -->
-                                        <path d="M16,24 L16,42 L42,42" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                                        <line x1="16" y1="42" x2="16" y2="56" stroke="currentColor" stroke-width="3"/>
-                                        <!-- Seated Figure with leg extending outward -->
-                                        <circle cx="22" cy="20" r="4.5"/>
-                                        <path d="M22,25 L22,42 L44,42 L52,34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <!-- Extension Roller Weight indicator -->
-                                        <circle cx="52" cy="34" r="3"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -10px; top: -222px;" alt="Leg Extension" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">레그 익스텐션</p>
-                                    <span class="text-[9px] text-slate-500">앞벅지 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">레그 익스텐션</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">앞벅지 (보조 • +2점)</span>
                                 </div>
                             </div>
 
                             <!-- 8. Leg Press -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-press">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-press">
                                 <div class="flex items-center justify-between">
-                                    <!-- Angled Leg Press Machine -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Sled tracks -->
-                                        <line x1="16" y1="50" x2="48" y2="18" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Backrest -->
-                                        <line x1="14" y1="36" x2="26" y2="48" stroke="currentColor" stroke-width="3"/>
-                                        <!-- Person pushed position -->
-                                        <circle cx="22" cy="32" r="4.5"/>
-                                        <path d="M22,36 L30,42 L44,32 L46,24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <!-- Sled plate -->
-                                        <line x1="42" y1="20" x2="50" y2="28" stroke="currentColor" stroke-width="4"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -125px; top: -222px;" alt="Leg Press" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">레그 프레스 머신</p>
-                                    <span class="text-[9px] text-slate-500">허벅지전체 (3점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">레그 프레스 머신</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">허벅지 전체 (대근육 • +3점)</span>
                                 </div>
                             </div>
 
                             <!-- 9. Lying Leg Curl -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-curl">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="leg-curl">
                                 <div class="flex items-center justify-between">
-                                    <!-- Lying Leg Curl -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Flat Bench -->
-                                        <line x1="8" y1="44" x2="56" y2="44" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Person Lying Face Down -->
-                                        <circle cx="16" cy="34" r="4.5"/>
-                                        <path d="M20,38 L42,38 L34,22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                        <circle cx="34" cy="22" r="3"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -260px; top: -222px;" alt="Leg Curl" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">라잉 레그 컬</p>
-                                    <span class="text-[9px] text-slate-500">뒷벅지 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">라잉 레그 컬</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">뒷벅지 (보조 • +2점)</span>
                                 </div>
                             </div>
 
                             <!-- 10. Calf Raise Machine -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="calf-raise">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="calf-raise">
                                 <div class="flex items-center justify-between">
-                                    <!-- Standing Calf Raise -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Shoulder Pads Frame -->
-                                        <line x1="20" y1="28" x2="44" y2="28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                                        <!-- Stand Frame -->
-                                        <line x1="16" y1="54" x2="48" y2="54" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Lifter body standing straight, heel raised -->
-                                        <circle cx="32" cy="18" r="4.5"/>
-                                        <line x1="32" y1="22" x2="32" y2="44" stroke="currentColor" stroke-width="4"/>
-                                        <path d="M26,44 L26,52 L22,53 M38,44 L38,52 L34,53" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -98px; top: -330px;" alt="Calf Raise" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">카프레이즈 머신</p>
-                                    <span class="text-[9px] text-slate-500">종아리 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">카프레이즈 머신</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">종아리 (보조 • +2점)</span>
                                 </div>
                             </div>
 
                             <!-- 11. Cable Curl (Biceps) -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-curl">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-curl">
                                 <div class="flex items-center justify-between">
-                                    <!-- Standing Bicep Curl -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <circle cx="32" cy="20" r="4.5"/>
-                                        <line x1="32" y1="24" x2="32" y2="52" stroke="currentColor" stroke-width="4"/>
-                                        <!-- Flexed Arm curl motion -->
-                                        <path d="M32,32 L22,26 L20,16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
-                                        <!-- Dumbbell weight -->
-                                        <circle cx="20" cy="16" r="3.5"/>
-                                        <line x1="24" y1="52" x2="20" y2="60" stroke="currentColor" stroke-width="4"/>
-                                        <line x1="40" y1="52" x2="44" y2="60" stroke="currentColor" stroke-width="4"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -190px; top: -330px;" alt="Cable Biceps Curl" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">암 컬 머신 (이두)</p>
-                                    <span class="text-[9px] text-slate-500">이두 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">암 컬 머신</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">상완이두 (보조 • +2점)</span>
                                 </div>
                             </div>
 
                             <!-- 12. Cable Pushdown (Triceps) -->
-                            <div class="equip-card p-2 rounded-xl bg-brand-darkCard border border-brand-darkBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-pushdown">
+                            <div class="equip-card p-2.5 rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder cursor-pointer transition-all select-none hover:border-brand-red/30 flex flex-col gap-1.5" data-equip="cable-pushdown">
                                 <div class="flex items-center justify-between">
-                                    <!-- Triceps Pressdown motion -->
-                                    <svg viewBox="0 0 64 64" class="w-8 h-8 text-brand-red/80 fill-current">
-                                        <!-- Top Pulley -->
-                                        <circle cx="32" cy="12" r="3"/>
-                                        <line x1="32" y1="15" x2="32" y2="28" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2"/>
-                                        <!-- Body leaning forward -->
-                                        <circle cx="24" cy="24" r="4.5"/>
-                                        <path d="M24,28.5 L24,48 L18,58 M32,28 L30,38 L32,46" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                                    </svg>
+                                    <div class="sprite-container">
+                                        <img src="image_fd7de0.jpg" class="sprite-img" style="width: 380px; left: -285px; top: -330px;" alt="Cable Triceps Pushdown" />
+                                    </div>
                                     <div class="w-3.5 h-3.5 rounded-full border border-slate-600 flex items-center justify-center checked-icon">
                                         <div class="w-1.5 h-1.5 rounded-full bg-brand-red scale-0 transition-transform"></div>
                                     </div>
                                 </div>
-                                <div class="text-left">
-                                    <p class="text-[11px] font-bold text-slate-200">케이블 푸쉬다운</p>
-                                    <span class="text-[9px] text-slate-500">삼두 (2점)</span>
+                                <div class="text-left mt-1">
+                                    <p class="text-[11px] font-extrabold text-slate-700 dark:text-slate-200 light:text-slate-700">케이블 푸쉬다운</p>
+                                    <span class="text-[9px] text-slate-400 font-semibold">상완삼두 (보조 • +2점)</span>
                                 </div>
                             </div>
 
@@ -658,29 +553,52 @@
 
                     <!-- Step 2: Difficulty Selection -->
                     <div class="space-y-3">
-                        <h4 class="text-xs font-semibold tracking-wide text-slate-300 uppercase flex items-center gap-2">
-                            <span class="text-brand-red font-bold">02.</span> 나의 운동 난이도 및 강도
+                        <h4 class="text-xs font-semibold tracking-wide text-slate-600 dark:text-slate-300 light:text-slate-700 uppercase flex items-center gap-2">
+                            <span class="text-brand-red font-bold">02.</span> 나의 운동 난이도 및 1RM 스펙
                         </h4>
                         <div class="grid grid-cols-3 gap-2">
                             <label class="relative block cursor-pointer select-none">
                                 <input type="radio" name="difficulty" value="beginner" checked class="sr-only peer">
-                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard border border-brand-darkBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
-                                    <p class="text-xs font-bold text-white">초급자</p>
-                                    <span class="text-[9px] text-slate-500 block mt-0.5">55% 1RM</span>
+                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
+                                    <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">초급자</p>
+                                    <span class="text-[9px] text-slate-400 block mt-0.5">3세트 (55% 1RM)</span>
                                 </div>
                             </label>
                             <label class="relative block cursor-pointer select-none">
                                 <input type="radio" name="difficulty" value="intermediate" class="sr-only peer">
-                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard border border-brand-darkBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
-                                    <p class="text-xs font-bold text-white">중급자</p>
-                                    <span class="text-[9px] text-slate-500 block mt-0.5">75% 1RM</span>
+                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
+                                    <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">중급자</p>
+                                    <span class="text-[9px] text-slate-400 block mt-0.5">4세트 (75% 1RM)</span>
                                 </div>
                             </label>
                             <label class="relative block cursor-pointer select-none">
                                 <input type="radio" name="difficulty" value="advanced" class="sr-only peer">
-                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard border border-brand-darkBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
-                                    <p class="text-xs font-bold text-white">고급자</p>
-                                    <span class="text-[9px] text-slate-500 block mt-0.5">85% 1RM</span>
+                                <div class="p-2.5 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all">
+                                    <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">고급자</p>
+                                    <span class="text-[9px] text-slate-400 block mt-0.5">5세트 (85% 1RM)</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Target Routine Mode (Upper vs Lower Split selection) -->
+                    <div class="space-y-3">
+                        <h4 class="text-xs font-semibold tracking-wide text-slate-600 dark:text-slate-300 light:text-slate-700 uppercase flex items-center gap-2">
+                            <span class="text-brand-red font-bold">03.</span> 오늘 단련할 분할 부위 선택 (2분할 분리)
+                        </h4>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="relative block cursor-pointer select-none">
+                                <input type="radio" name="routine-split" value="upper" checked class="sr-only peer">
+                                <div class="p-3 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all flex flex-col items-center justify-center">
+                                    <span class="text-xs font-extrabold text-brand-neonBlue"><i class="fa-solid fa-person-walking-lucid mr-1"></i> 상체 전용 Day</span>
+                                    <span class="text-[9px] text-slate-400 block mt-0.5">최대 10점 제한 볼륨</span>
+                                </div>
+                            </label>
+                            <label class="relative block cursor-pointer select-none">
+                                <input type="radio" name="routine-split" value="lower" class="sr-only peer">
+                                <div class="p-3 text-center rounded-xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder peer-checked:border-brand-red peer-checked:bg-brand-red/5 transition-all flex flex-col items-center justify-center">
+                                    <span class="text-xs font-extrabold text-brand-neonGreen"><i class="fa-solid fa-shoe-prints mr-1"></i> 하체 전용 Day</span>
+                                    <span class="text-[9px] text-slate-400 block mt-0.5">최대 10점 제한 볼륨</span>
                                 </div>
                             </label>
                         </div>
@@ -688,21 +606,21 @@
 
                     <!-- Generate Button -->
                     <button id="btn-generate" class="w-full py-3 bg-brand-red text-white font-bold text-xs rounded-xl hover:bg-red-600 transition-all duration-300 neon-shadow-red flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> 과학적 상/하체 2분할 루틴 짜기
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> 2분할 한계 세트 산출 및 루틴 짜기
                     </button>
                 </div>
 
-                <!-- Right Side: Dynamically Generated Split Routine Panel (Upper/Lower Split, Score based) -->
+                <!-- Right Side: Dynamically Generated Split Routine Panel -->
                 <div class="lg:col-span-7 flex flex-col h-full">
-                    <div class="p-5 rounded-2xl bg-brand-darkCard border border-brand-darkBorder flex-1 flex flex-col min-h-[460px]">
+                    <div class="p-5 rounded-2xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder flex-1 flex flex-col min-h-[460px]">
                         
                         <!-- Dynamic Header -->
-                        <div class="border-b border-brand-darkBorder pb-3 mb-3 flex flex-wrap justify-between items-center gap-2">
+                        <div class="border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 pb-3 mb-3 flex flex-wrap justify-between items-center gap-2">
                             <div>
-                                <h3 class="text-base font-bold text-white flex items-center gap-1.5">
-                                    <i class="fa-solid fa-rectangle-list text-brand-red"></i> 상/하체 2분할 맞춤 설계 리포트
+                                <h3 class="text-base font-bold text-slate-800 dark:text-white light:text-slate-800 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-rectangle-list text-brand-red"></i> 2분할 과학적 한계 볼륨 리포트
                                 </h3>
-                                <p class="text-slate-500 text-[10px] mt-0.5">오버트레이닝 방지를 위해 최대 10점 한도 점수 시스템이 적용되었습니다.</p>
+                                <p class="text-slate-500 text-[10px] mt-0.5">Schoenfeld 교수 주간 피로 누적 공식에 의해 최적 세트가 역량 산출됩니다.</p>
                             </div>
                             <span class="px-2 py-0.5 bg-brand-red/10 border border-brand-red/20 text-brand-red rounded-lg text-[10px] font-bold" id="badge-difficulty">
                                 초급자 가이드
@@ -710,63 +628,63 @@
                         </div>
 
                         <!-- Timing Info Box -->
-                        <div class="grid grid-cols-3 gap-2 mb-4 bg-black/30 p-2.5 rounded-xl border border-brand-darkBorder text-center">
+                        <div class="grid grid-cols-3 gap-2 mb-4 bg-black/30 dark:bg-black/30 light:bg-slate-50 p-2.5 rounded-xl border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 text-center">
                             <div>
                                 <p class="text-[9px] text-slate-500 uppercase font-semibold">예상 소요 시간</p>
-                                <p class="text-xs font-bold text-white mt-0.5" id="text-est-time">약 40분</p>
+                                <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700 mt-0.5" id="text-est-time">약 15분</p>
                             </div>
                             <div>
-                                <p class="text-[9px] text-slate-500 uppercase font-semibold">세트당 추천 휴식</p>
-                                <p class="text-xs font-bold text-white mt-0.5" id="text-rest-time">90초</p>
+                                <p class="text-[9px] text-slate-500 uppercase font-semibold">추천 휴식 시간</p>
+                                <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700 mt-0.5" id="text-rest-time">90초</p>
                             </div>
                             <div>
-                                <p class="text-[9px] text-slate-500 uppercase font-semibold">총 추천 종목 수</p>
-                                <p class="text-xs font-bold text-white mt-0.5" id="text-exercise-count">6개 종목</p>
+                                <p class="text-[9px] text-slate-500 uppercase font-semibold">일일 총 목표 세트</p>
+                                <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700 mt-0.5" id="text-exercise-count">0 세트</p>
                             </div>
                         </div>
 
-                        <!-- Split Routines Output (Upper and Lower Columns) -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 overflow-y-auto max-h-[380px] pr-1">
-                            
-                            <!-- UPPER BODY ROUTINE COLUMN -->
-                            <div class="space-y-2 p-2 bg-black/20 rounded-xl border border-brand-darkBorder/40">
-                                <div class="flex justify-between items-center border-b border-brand-darkBorder/60 pb-1.5 px-1">
-                                    <span class="text-xs font-extrabold text-brand-neonBlue flex items-center gap-1">
-                                        <i class="fa-solid fa-person-walking-lucid"></i> 상체 루틴 (Upper)
-                                    </span>
-                                    <span class="text-[9px] text-slate-400 font-bold bg-brand-neonBlue/10 border border-brand-neonBlue/30 px-1.5 py-0.5 rounded-full" id="upper-score-badge">0점 / 10점</span>
-                                </div>
-                                <div class="space-y-2" id="upper-routine-container">
-                                    <!-- Dynamic Cards inserted here -->
+                        <!-- Volume Adequacy Diagnosis Bar (Req 5: 볼륨 진단 알림 기능) -->
+                        <div id="volume-diagnostic-banner" class="mb-4 p-3 rounded-xl border flex items-center justify-between transition-all">
+                            <div class="flex items-center gap-2">
+                                <span class="text-lg" id="volume-diagnostic-icon">⚠️</span>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700" id="volume-diagnostic-title">볼륨 부족 감지</p>
+                                    <p class="text-[10px] text-slate-400" id="volume-diagnostic-desc">효과를 보려면 최소 6세트 이상 설계가 권장됩니다.</p>
                                 </div>
                             </div>
+                            <div class="text-right">
+                                <span class="text-xs font-extrabold text-brand-red" id="volume-diagnostic-score">0점 / 10점</span>
+                            </div>
+                        </div>
 
-                            <!-- LOWER BODY ROUTINE COLUMN -->
-                            <div class="space-y-2 p-2 bg-black/20 rounded-xl border border-brand-darkBorder/40">
-                                <div class="flex justify-between items-center border-b border-brand-darkBorder/60 pb-1.5 px-1">
-                                    <span class="text-xs font-extrabold text-brand-neonGreen flex items-center gap-1">
-                                        <i class="fa-solid fa-shoe-prints"></i> 하체 루틴 (Lower)
+                        <!-- Split Routines Output (Upper or Lower Dynamic Container) -->
+                        <div class="flex-1 overflow-y-auto max-h-[380px] pr-1 space-y-3">
+                            <div class="p-3 bg-black/20 dark:bg-black/20 light:bg-slate-50 rounded-xl border border-brand-darkBorder/40 dark:border-brand-darkBorder/40 light:border-slate-200">
+                                <div class="flex justify-between items-center border-b border-brand-darkBorder/60 dark:border-brand-darkBorder/60 light:border-slate-200 pb-1.5 px-1 mb-3">
+                                    <span class="text-xs font-extrabold text-slate-700 dark:text-white light:text-slate-700 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-circle-play text-brand-red"></i> 
+                                        <span id="split-title-display">오늘 추천 루틴 구성</span>
                                     </span>
-                                    <span class="text-[9px] text-slate-400 font-bold bg-brand-neonGreen/10 border border-brand-neonGreen/30 px-1.5 py-0.5 rounded-full" id="lower-score-badge">0점 / 10점</span>
+                                    <span class="text-[9px] font-bold bg-brand-red/10 border border-brand-red/30 text-brand-red px-2 py-0.5 rounded-full" id="split-score-badge">0점 / 10점</span>
                                 </div>
-                                <div class="space-y-2" id="lower-routine-container">
-                                    <!-- Dynamic Cards inserted here -->
+                                
+                                <div class="space-y-2" id="routine-output-container">
+                                    <!-- Dynamic Workout Cards inserted here with Sets/Reps clearly displayed (Req 3) -->
                                 </div>
                             </div>
-
                         </div>
 
                         <!-- Bottom Utility: Active Rest Timer & Completion Button -->
-                        <div class="mt-4 pt-3 border-t border-brand-darkBorder flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <div class="mt-4 pt-3 border-t border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
                             <!-- Rest Timer Mini UI -->
-                            <div class="flex items-center gap-2.5 w-full sm:w-auto bg-black/20 px-3 py-2 rounded-xl border border-brand-darkBorder">
+                            <div class="flex items-center gap-2.5 w-full sm:w-auto bg-black/20 dark:bg-black/20 light:bg-slate-50 px-3 py-2 rounded-xl border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200">
                                 <div class="w-7 h-7 rounded-full bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red" id="timer-trigger">
                                     <i class="fa-solid fa-stopwatch animate-pulse text-xs"></i>
                                 </div>
                                 <div class="text-left">
                                     <p class="text-[9px] text-slate-500 uppercase font-semibold">세트 사이 휴식 타이머</p>
                                     <div class="flex items-center gap-2">
-                                        <span id="timer-display" class="text-xs font-bold text-white">90초 대기</span>
+                                        <span id="timer-display" class="text-xs font-bold text-slate-700 dark:text-white light:text-slate-700">90초 대기</span>
                                         <button id="btn-timer" class="text-[10px] text-brand-red hover:underline font-bold">시작</button>
                                     </div>
                                 </div>
@@ -784,43 +702,43 @@
         </div>
     </section>
 
-    <!-- Brand Introduction & Core Value Cards (Now located below the Routine Builder) -->
-    <section id="strength-cards" class="py-16 px-4 lg:px-8 border-b border-brand-darkBorder bg-brand-darkBg relative">
+    <!-- Brand Introduction & Core Value Cards -->
+    <section id="strength-cards" class="py-16 px-4 lg:px-8 border-b border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder bg-brand-darkBg dark:bg-brand-darkBg light:bg-white relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-10">
                 <span class="text-brand-red text-xs font-bold tracking-widest uppercase">STRENGTH & PHILOSOPHY</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 tracking-tight">KINETIC이 제안하는 헬린이 극복 솔루션</h2>
-                <p class="text-slate-400 text-xs sm:text-sm mt-2">남들의 눈치를 보며 주저하던 헬스장은 가라! 자극 부위를 명확히 깨닫고 확실히 단련합니다.</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mt-1 tracking-tight text-slate-800 dark:text-white light:text-slate-800">KINETIC이 제안하는 헬린이 극복 솔루션</h2>
+                <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs sm:text-sm mt-2">남들의 눈치를 보며 주저하던 헬스장은 가라! 자극 부위를 명확히 깨닫고 확실히 단련합니다.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Card 1 -->
-                <div class="p-5 rounded-2xl bg-brand-darkCard border border-brand-darkBorder hover:border-brand-red/30 transition-all duration-300">
+                <div class="p-5 rounded-2xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder hover:border-brand-red/30 transition-all duration-300">
                     <div class="w-10 h-10 rounded-xl bg-brand-red/10 flex items-center justify-center text-brand-red mb-4 text-lg">
                         <i class="fa-solid fa-eye"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-1.5">[양방향 시각 피드백]</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
+                    <h3 class="text-base font-bold text-slate-700 dark:text-white light:text-slate-700 mb-1.5">[양방향 시각 피드백]</h3>
+                    <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs leading-relaxed">
                         정밀 매핑된 9대 부위 가이드를 마우스 터치만으로 인체 지도와 직접 대조해 보세요. 운동 시 자극되는 지점을 명확하게 인지할 수 있습니다.
                     </p>
                 </div>
                 <!-- Card 2 -->
-                <div class="p-5 rounded-2xl bg-brand-darkCard border border-brand-darkBorder hover:border-brand-red/30 transition-all duration-300">
+                <div class="p-5 rounded-2xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder hover:border-brand-red/30 transition-all duration-300">
                     <div class="w-10 h-10 rounded-xl bg-brand-red/10 flex items-center justify-center text-brand-red mb-4 text-lg">
                         <i class="fa-solid fa-sliders"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-1.5">[점수제 기반의 안심 비배율]</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
+                    <h3 class="text-base font-bold text-slate-700 dark:text-white light:text-slate-700 mb-1.5">[점수제 기반의 안심 비배율]</h3>
+                    <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs leading-relaxed">
                         아무리 많은 기구를 선택해도, 한 번에 과중량이 실리지 않도록 안전 점수 최대 10점 한도 배분 알고리즘을 이용해 상/하체 균형 맞춤형 루틴을 구성해 줍니다.
                     </p>
                 </div>
                 <!-- Card 3 -->
-                <div class="p-5 rounded-2xl bg-brand-darkCard border border-brand-darkBorder hover:border-brand-red/30 transition-all duration-300">
+                <div class="p-5 rounded-2xl bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-darkBorder dark:border-brand-darkBorder light:border-brand-lightBorder hover:border-brand-red/30 transition-all duration-300">
                     <div class="w-10 h-10 rounded-xl bg-brand-red/10 flex items-center justify-center text-brand-red mb-4 text-lg">
                         <i class="fa-solid fa-percent"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-1.5">[성장 맞춤형 무게 가이드]</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">
+                    <h3 class="text-base font-bold text-slate-700 dark:text-white light:text-slate-700 mb-1.5">[성장 맞춤형 무게 가이드]</h3>
+                    <p class="text-slate-500 dark:text-slate-400 light:text-slate-600 text-xs leading-relaxed">
                         초보자에게 단순 kg 표시는 부상으로 이어집니다. 자신의 임계 무게를 기준으로 계산된 '% 1RM' 과학적 비례식으로 똑똑하게 중량을 조절하세요.
                     </p>
                 </div>
@@ -829,11 +747,11 @@
     </section>
 
     <!-- Custom Nutrition Modal (Wellness feedback) -->
-    <div id="wellness-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="bg-brand-darkCard border border-brand-red/50 max-w-lg w-full rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(255,75,43,0.3)] transform transition-transform duration-300 scale-95" id="wellness-modal-content">
+    <div id="wellness-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm hidden">
+        <div class="bg-brand-darkCard dark:bg-brand-darkCard light:bg-brand-lightCard border border-brand-red/50 max-w-lg w-full rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(255,75,43,0.3)] transform transition-transform duration-300 scale-95" id="wellness-modal-content">
             <div class="relative p-6 sm:p-8">
                 <!-- Close Button -->
-                <button id="btn-close-modal" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 border border-brand-darkBorder flex items-center justify-center text-slate-400 hover:text-white hover:border-brand-red/50 transition-all">
+                <button id="btn-close-modal" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/40 border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-300 flex items-center justify-center text-slate-400 hover:text-white hover:border-brand-red/50 transition-all">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
 
@@ -843,37 +761,37 @@
                         <i class="fa-solid fa-trophy"></i>
                     </div>
                     <span class="text-xs font-bold text-brand-red uppercase tracking-wider">오늘 운동완료를 축하합니다!</span>
-                    <h3 class="text-xl font-black text-white mt-1">오늘 자극 부위 전용 영양·이완 가이드</h3>
+                    <h3 class="text-xl font-black text-slate-800 dark:text-white light:text-slate-800 mt-1">오늘 자극 부위 전용 영양·이완 가이드</h3>
                 </div>
 
                 <!-- Custom Content Block -->
-                <div class="space-y-4 bg-black/40 p-4 rounded-xl border border-brand-darkBorder">
+                <div class="space-y-4 bg-black/40 dark:bg-black/40 light:bg-slate-50 p-4 rounded-xl border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200">
                     <div>
-                        <h4 class="text-xs font-bold text-slate-300 uppercase flex items-center gap-1.5 mb-1.5">
+                        <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 light:text-slate-700 uppercase flex items-center gap-1.5 mb-1.5">
                             <i class="fa-solid fa-utensils text-brand-red"></i> 단백질 충전 가이드
                         </h4>
-                        <p class="text-xs text-slate-400 leading-relaxed" id="wellness-protein-text">
-                            오늘 상/하체 고른 부위 단련을 진행하셨네요! 체중당 0.3g 분량인 단백질 20g 보충을 추천해요.
+                        <p class="text-xs text-slate-500 dark:text-slate-400 light:text-slate-600 leading-relaxed" id="wellness-protein-text">
+                            오늘 운동을 진행하셨네요! 체중당 0.3g 분량인 단백질 20g 보충을 추천해요.
                         </p>
                     </div>
 
                     <div class="border-t border-brand-darkBorder/40 pt-3">
-                        <h4 class="text-xs font-bold text-slate-300 uppercase flex items-center gap-1.5 mb-1.5">
+                        <h4 class="text-xs font-bold text-slate-700 dark:text-slate-300 light:text-slate-700 uppercase flex items-center gap-1.5 mb-1.5">
                             <i class="fa-solid fa-child-reaching text-brand-red"></i> 맞춤 스트레칭 피드백
                         </h4>
-                        <p class="text-xs text-slate-400 leading-relaxed" id="wellness-stretch-text">
-                            허벅지와 광배근에 가해진 과도한 긴장을 완화하기 위해 골반 롤링 이완법과 전신 스트레칭을 5분 진행하세요.
+                        <p class="text-xs text-slate-500 dark:text-slate-400 light:text-slate-600 leading-relaxed" id="wellness-stretch-text">
+                            피로 회복 속도를 향상시키기 위해 가동범위 전신 폼롤러 및 관절 이완법을 5분 진행하세요.
                         </p>
                     </div>
                 </div>
 
-                <!-- Coupang Shopping Redirect banner added based on requirement 5 -->
+                <!-- Coupang Shopping Redirect banner (Req 5) -->
                 <a href="https://www.coupang.com/np/search?q=닭가슴살" target="_blank" rel="noopener noreferrer" class="mt-4 p-3 rounded-xl border border-brand-red/30 bg-gradient-to-r from-brand-red/15 to-transparent flex items-center justify-between gap-3 hover:border-brand-red/60 transition-all group">
                     <div class="flex items-center gap-3 text-left">
                         <div class="text-2xl">🥤</div>
                         <div>
-                            <p class="text-xs font-bold text-slate-200 group-hover:text-brand-red transition-colors">초보 헬스인 필수 웰니스 추천</p>
-                            <p class="text-[10px] text-slate-400">자극 완수한 근육에 신선한 닭가슴살을 빠르게 배송받으세요!</p>
+                            <p class="text-xs font-bold text-slate-700 dark:text-slate-200 light:text-slate-800 group-hover:text-brand-red transition-colors">초보 헬스인 필수 웰니스 추천</p>
+                            <p class="text-[10px] text-slate-500">근육 합성에 필요한 신선한 닭가슴살을 빠르게 만나보세요!</p>
                         </div>
                     </div>
                     <span class="text-xs font-bold text-brand-red flex items-center gap-1">쿠팡 이동 <i class="fa-solid fa-chevron-right text-[9px] group-hover:translate-x-1 transition-transform"></i></span>
@@ -887,23 +805,23 @@
         </div>
     </div>
 
-    <!-- 담백한 타이머 완료 팝업 알림 (Toast Alert) -->
-    <div id="timer-done-alert" class="fixed bottom-6 right-6 z-50 bg-[#1e1e1e] border border-brand-red rounded-xl p-4 shadow-2xl flex items-center gap-3 max-w-xs transition-all duration-300 transform translate-y-12 opacity-0 pointer-events-none">
+    <!-- 담백한 타이머 완료 팝업 알림 (Toast Alert - Req 4) -->
+    <div id="timer-done-alert" class="fixed bottom-6 right-6 z-50 bg-[#1e1e1e] dark:bg-[#1e1e1e] light:bg-white border border-brand-red rounded-xl p-4 shadow-2xl flex items-center gap-3 max-w-xs transition-all duration-300 transform translate-y-12 opacity-0 pointer-events-none">
         <div class="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red text-base">
             <i class="fa-solid fa-stopwatch animate-bounce"></i>
         </div>
         <div class="flex-1">
-            <h4 class="text-xs font-extrabold text-white">타이머 종료</h4>
-            <p class="text-[10px] text-slate-400 mt-0.5">휴식 시간이 완료되었습니다.<br>다음 세트를 바로 진행하세요!</p>
+            <h4 class="text-xs font-extrabold text-slate-800 dark:text-white light:text-slate-800">휴식 완료!</h4>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 light:text-slate-600 mt-0.5">휴식 시간이 종료되었습니다.<br>다음 세트를 바로 진행하세요!</p>
         </div>
         <button onclick="closeTimerDoneAlert()" class="text-[10px] font-bold text-brand-red hover:underline self-start">닫기</button>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-black border-t border-brand-darkBorder py-8 px-4 lg:px-8 text-center md:text-left">
+    <footer class="bg-black border-t border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 py-8 px-4 lg:px-8 text-center md:text-left">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="space-y-1">
-                <span class="text-lg font-black text-brand-red tracking-wider">KINETIC<span class="text-white font-light">ROUTINE</span></span>
+                <span class="text-lg font-black text-brand-red tracking-wider">KINETIC<span class="text-white dark:text-white light:text-slate-800 font-light">ROUTINE</span></span>
                 <p class="text-[10px] text-slate-500">"자극을 눈으로 보고, 루틴을 몸으로 느끼다."</p>
                 <p class="text-[9px] text-slate-600">&copy; 2026 KINETIC ROUTINE. All Rights Reserved.</p>
             </div>
@@ -916,33 +834,33 @@
 
     <!-- Interactive Logic Script -->
     <script>
-        // Comprehensive Gym Equipment Database (Divided into Upper and Lower, each with designated muscle targets & score value weights)
+        // Comprehensive Gym Equipment Database
         const EQUIPMENT_DATABASE = {
-            "chest-press": { name: "머신 체스트 프레스", muscle: "chest", score: 3, cat: "upper", isMachine: true },
-            "pec-deck": { name: "펙덱 플라이 머신", muscle: "chest", score: 2, cat: "upper", isMachine: true },
-            "lat-pulldown": { name: "머신 렛풀다운", muscle: "back", score: 3, cat: "upper", isMachine: true },
-            "cable-row": { name: "시티드 케이블 로우", muscle: "back", score: 3, cat: "upper", isMachine: true },
-            "shoulder-press": { name: "머신 숄더 프레스", muscle: "shoulders", score: 3, cat: "upper", isMachine: true },
-            "lateral-raise": { name: "레터럴 레이즈 머신", muscle: "shoulders", score: 2, cat: "upper", isMachine: true },
-            "leg-extension": { name: "레그 익스텐션", muscle: "quads", score: 2, cat: "lower", isMachine: true },
-            "leg-press": { name: "레그 프레스 머신", muscle: "quads", score: 3, cat: "lower", isMachine: true },
-            "leg-curl": { name: "라잉 레그 컬", muscle: "hamstrings", score: 2, cat: "lower", isMachine: true },
-            "calf-raise": { name: "스탠딩 카프레이즈", muscle: "calves", score: 2, cat: "lower", isMachine: true },
-            "cable-curl": { name: "케이블 암 컬 머신", muscle: "biceps", score: 2, cat: "upper", isMachine: true },
-            "cable-pushdown": { name: "케이블 푸쉬다운", muscle: "triceps", score: 2, cat: "upper", isMachine: true }
+            "chest-press": { name: "머신 체스트 프레스", muscle: "chest", score: 3, isMachine: true },
+            "pec-deck": { name: "펙덱 플라이 머신", muscle: "chest", score: 2, isMachine: true },
+            "lat-pulldown": { name: "머신 렛풀다운", muscle: "back", score: 3, isMachine: true },
+            "cable-row": { name: "시티드 케이블 로우", muscle: "back", score: 3, isMachine: true },
+            "shoulder-press": { name: "머신 숄더 프레스", muscle: "shoulders", score: 3, isMachine: true },
+            "lateral-raise": { name: "레터럴 레이즈 머신", muscle: "shoulders", score: 2, isMachine: true },
+            "leg-extension": { name: "레그 익스텐션", muscle: "quads", score: 2, isMachine: true },
+            "leg-press": { name: "레그 프레스 머신", muscle: "quads", score: 3, isMachine: true },
+            "leg-curl": { name: "라잉 레그 컬", muscle: "hamstrings", score: 2, isMachine: true },
+            "calf-raise": { name: "스탠딩 카프레이즈", muscle: "calves", score: 2, isMachine: true },
+            "cable-curl": { name: "케이블 암 컬 머신", muscle: "biceps", score: 2, isMachine: true },
+            "cable-pushdown": { name: "케이블 푸쉬다운", muscle: "triceps", score: 2, isMachine: true }
         };
 
-        // Free Weight Fallbacks to guarantee complete workouts when machines aren't selected
+        // Free Weight Fallbacks to guarantee complete workouts
         const FREEWEIGHT_FALLBACKS = [
-            { id: "fw-bench-press", name: "덤벨 플랫 벤치프레스", muscle: "chest", score: 3, cat: "upper", isMachine: false },
-            { id: "fw-dumbbell-row", name: "원암 덤벨 로우", muscle: "back", score: 3, cat: "upper", isMachine: false },
-            { id: "fw-shoulder-press", name: "덤벨 숄더 프레스", muscle: "shoulders", score: 3, cat: "upper", isMachine: false },
-            { id: "fw-biceps-curl", name: "얼터네이팅 덤벨 컬", muscle: "biceps", score: 2, cat: "upper", isMachine: false },
-            { id: "fw-triceps-kickback", name: "덤벨 트라이셉스 킥백", muscle: "triceps", score: 2, cat: "upper", isMachine: false },
-            { id: "fw-crunch", name: "매트 크런치", muscle: "abs", score: 2, cat: "upper", isMachine: false },
-            { id: "fw-squat", name: "고블릿 덤벨 스쿼트", muscle: "quads", score: 3, cat: "lower", isMachine: false },
-            { id: "fw-rdl", name: "덤벨 루마니안 데드리프트", muscle: "hamstrings", score: 3, cat: "lower", isMachine: false },
-            { id: "fw-calf-raise", name: "맨몸 카프레이즈", muscle: "calves", score: 2, cat: "lower", isMachine: false }
+            { id: "fw-bench-press", name: "덤벨 플랫 벤치프레스", muscle: "chest", score: 3, isMachine: false },
+            { id: "fw-dumbbell-row", name: "원암 덤벨 로우", muscle: "back", score: 3, isMachine: false },
+            { id: "fw-shoulder-press", name: "덤벨 숄더 프레스", muscle: "shoulders", score: 3, isMachine: false },
+            { id: "fw-biceps-curl", name: "얼터네이팅 덤벨 컬", muscle: "biceps", score: 2, isMachine: false },
+            { id: "fw-triceps-kickback", name: "덤벨 트라이셉스 킥백", muscle: "triceps", score: 2, isMachine: false },
+            { id: "fw-crunch", name: "매트 크런치", muscle: "abs", score: 2, isMachine: false },
+            { id: "fw-squat", name: "고블릿 덤벨 스쿼트", muscle: "quads", score: 3, isMachine: false },
+            { id: "fw-rdl", name: "덤벨 루마니안 데드리프트", muscle: "hamstrings", score: 3, isMachine: false },
+            { id: "fw-calf-raise", name: "맨몸 카프레이즈", muscle: "calves", score: 2, isMachine: false }
         ];
 
         // Active State variables
@@ -957,10 +875,39 @@
             setupRoutineGeneration();
             setupRestTimer();
             setupWellnessModal();
+            setupThemeToggle();
             
             // Build default starter routine
             generateRoutine();
         });
+
+        // Theme Toggle (Light/Dark Mode) Action Handler
+        function setupThemeToggle() {
+            const btnTheme = document.getElementById('btn-theme-toggle');
+            const htmlElement = document.documentElement;
+
+            // Load saved theme or default to dark
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+            } else {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+            }
+
+            btnTheme.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    htmlElement.classList.add('light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    htmlElement.classList.remove('light');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
 
         // Interactive Anatomical Map Hover & Click logic
         function setupAnatomicalMapInteractions() {
@@ -974,13 +921,13 @@
                 muscle.addEventListener('mouseenter', () => {
                     activateMuscleGraphic(targetName);
                     highlightLinkedCard(targetName);
-                    indicator.innerText = `현재 자극: ${getMuscleNameKorean(targetName)}`;
+                    indicator.innerText = `현재 자극 부위: ${getMuscleNameKorean(targetName)}`;
                 });
 
                 muscle.addEventListener('mouseleave', () => {
                     deactivateMuscleGraphic(targetName);
                     unhighlightLinkedCard(targetName);
-                    indicator.innerText = "지도에 마우스를 올려주세요";
+                    indicator.innerText = "지도를 탐색해 보세요";
                 });
             });
 
@@ -990,19 +937,18 @@
                 card.addEventListener('mouseenter', () => {
                     activateMuscleGraphic(targetName);
                     card.classList.add('border-brand-red', 'bg-brand-red/5');
-                    indicator.innerText = `현재 자극: ${getMuscleNameKorean(targetName)}`;
+                    indicator.innerText = `현재 자극 부위: ${getMuscleNameKorean(targetName)}`;
                 });
 
                 card.addEventListener('mouseleave', () => {
                     deactivateMuscleGraphic(targetName);
                     card.classList.remove('border-brand-red', 'bg-brand-red/5');
-                    indicator.innerText = "지도에 마우스를 올려주세요";
+                    indicator.innerText = "지도를 탐색해 보세요";
                 });
             });
         }
 
         function activateMuscleGraphic(muscleId) {
-            // Select all path parts belonging to the specific muscle category
             const parts = document.querySelectorAll(`[data-muscle="${muscleId}"]`);
             parts.forEach(part => {
                 part.classList.add('muscle-active');
@@ -1029,7 +975,6 @@
                 card.classList.remove('border-brand-red', 'bg-brand-red/5', 'scale-[1.02]');
             }
         }
-
 
         // Equipment Select Panel interactions
         function setupEquipmentSelection() {
@@ -1074,18 +1019,17 @@
         // Primary Generation Calculation Algorithm
         function generateRoutine() {
             const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
-            const upperContainer = document.getElementById('upper-routine-container');
-            const lowerContainer = document.getElementById('lower-routine-container');
+            const splitSelected = document.querySelector('input[name="routine-split"]:checked').value;
+            const outputContainer = document.getElementById('routine-output-container');
 
-            upperContainer.innerHTML = '';
-            lowerContainer.innerHTML = '';
+            outputContainer.innerHTML = '';
 
-            // 1RM specifications mapping
+            // Map sets based on scientifically validated set guidelines (Krieger & Schoenfeld)
             let intensityPct = "55%";
             let restSeconds = 90;
             let levelLabel = "초급자 가이드";
             let repsLabel = "12-15회";
-            let setsValue = 3; // Default sets value based on academic standards
+            let setsValue = 3;
 
             if (difficulty === "intermediate") {
                 intensityPct = "75%";
@@ -1106,120 +1050,120 @@
             timerDuration = restSeconds;
             resetCountdownUI();
 
-            // ----------------------------------------------------
-            // ALGORITHM: SCORE-BASED SYSTEM FOR SAFE ROUTINES
-            // LIMITS: Max Upper Score = 10, Max Lower Score = 10
-            // LIMITS: Max score per single muscle category = 5
-            // ----------------------------------------------------
-            let upperScore = 0;
-            let lowerScore = 0;
+            // Set split mode title
+            const splitTitleText = splitSelected === "upper" ? "오늘 추천 루틴: 상체 전용 (Upper)" : "오늘 추천 루틴: 하체 전용 (Lower)";
+            document.getElementById('split-title-display').innerText = splitTitleText;
+
+            // Calculate Volume Scores dynamically
+            let currentDayScore = 0;
+            const maxSessionScore = 10; // Max safety limit score per split
             const muscleScores = {
                 chest: 0, back: 0, shoulders: 0, biceps: 0, triceps: 0, abs: 0,
                 quads: 0, hamstrings: 0, calves: 0
             };
 
-            const selectedUpperRoutines = [];
-            const selectedLowerRoutines = [];
+            const selectedDayRoutines = [];
 
-            // 1) First pass: Try to add selected machines
+            // 1) Load Candidate machines selected
             const candidateEquips = Array.from(selectedEquipments).map(id => ({ id, ...EQUIPMENT_DATABASE[id] }));
 
             candidateEquips.forEach(eq => {
-                const targetMuscle = eq.muscle;
-                const scoreValue = eq.score;
-                
-                if (eq.cat === "upper") {
-                    // Check upper-body budget (Max 10) & muscle specific budget (Max 5)
-                    if (upperScore + scoreValue <= 10 && muscleScores[targetMuscle] + scoreValue <= 5) {
-                        selectedUpperRoutines.push(eq);
-                        upperScore += scoreValue;
-                        muscleScores[targetMuscle] += scoreValue;
+                const isUpperEquipment = ["chest", "back", "shoulders", "biceps", "triceps"].includes(eq.muscle);
+                const isLowerEquipment = ["quads", "hamstrings", "calves"].includes(eq.muscle);
+
+                // Filter based on selected day (Upper or Lower Split)
+                if (splitSelected === "upper" && isUpperEquipment) {
+                    if (currentDayScore + eq.score <= maxSessionScore && muscleScores[eq.muscle] + eq.score <= 5) {
+                        selectedDayRoutines.push(eq);
+                        currentDayScore += eq.score;
+                        muscleScores[eq.muscle] += eq.score;
                     }
-                } else if (eq.cat === "lower") {
-                    // Check lower-body budget (Max 10) & muscle specific budget (Max 5)
-                    if (lowerScore + scoreValue <= 10 && muscleScores[targetMuscle] + scoreValue <= 5) {
-                        selectedLowerRoutines.push(eq);
-                        lowerScore += scoreValue;
-                        muscleScores[targetMuscle] += scoreValue;
+                } else if (splitSelected === "lower" && isLowerEquipment) {
+                    if (currentDayScore + eq.score <= maxSessionScore && muscleScores[eq.muscle] + eq.score <= 5) {
+                        selectedDayRoutines.push(eq);
+                        currentDayScore += eq.score;
+                        muscleScores[eq.muscle] += eq.score;
                     }
                 }
             });
 
-            // 2) Second pass: Add free-weight fallback exercises to guarantee complete full-body simulation, avoiding muscle omission
-            FREEWEIGHT_FALLBACKS.forEach(fw => {
-                const targetMuscle = fw.muscle;
-                const scoreValue = fw.score;
+            // 2) Fallback on Freeweights if split is completely empty
+            const appropriateFallbacks = FREEWEIGHT_FALLBACKS.filter(fw => {
+                const isUpperFw = ["chest", "back", "shoulders", "biceps", "triceps", "abs"].includes(fw.muscle);
+                const isLowerFw = ["quads", "hamstrings", "calves"].includes(fw.muscle);
+                return splitSelected === "upper" ? isUpperFw : isLowerFw;
+            });
 
-                if (fw.cat === "upper") {
-                    // If no routine currently targets this muscle, try to fit this fallback under the score cap
-                    if (muscleScores[targetMuscle] === 0) {
-                        if (upperScore + scoreValue <= 10) {
-                            selectedUpperRoutines.push(fw);
-                            upperScore += scoreValue;
-                            muscleScores[targetMuscle] += scoreValue;
-                        }
-                    }
-                } else if (fw.cat === "lower") {
-                    if (muscleScores[targetMuscle] === 0) {
-                        if (lowerScore + scoreValue <= 10) {
-                            selectedLowerRoutines.push(fw);
-                            lowerScore += scoreValue;
-                            muscleScores[targetMuscle] += scoreValue;
-                        }
-                    }
+            appropriateFallbacks.forEach(fw => {
+                if (currentDayScore + fw.score <= maxSessionScore && muscleScores[fw.muscle] === 0) {
+                    selectedDayRoutines.push(fw);
+                    currentDayScore += fw.score;
+                    muscleScores[fw.muscle] += fw.score;
                 }
             });
 
-            // Update UI Score Indicators
-            document.getElementById('upper-score-badge').innerText = `${upperScore}점 / 10점`;
-            document.getElementById('lower-score-badge').innerText = `${lowerScore}점 / 10점`;
+            // Render output details
+            const totalSetsCalculated = selectedDayRoutines.length * setsValue;
+            document.getElementById('text-exercise-count').innerText = `${totalSetsCalculated} 세트`;
             
-            const totalCount = selectedUpperRoutines.length + selectedLowerRoutines.length;
-            document.getElementById('text-exercise-count').innerText = `${totalCount}개 종목`;
-            document.getElementById('text-est-time').innerText = `약 ${totalCount * 8 + 5}분`;
+            // Calc expected workout session duration
+            const singleSetDurationMinutes = 2.5; // incl. rest and execution
+            const totalDurationEst = Math.round(totalSetsCalculated * singleSetDurationMinutes);
+            document.getElementById('text-est-time').innerText = `약 ${totalDurationEst}분`;
 
-            // Draw UPPER routine Cards with visible SETS mapping
-            if (selectedUpperRoutines.length === 0) {
-                upperContainer.innerHTML = '<p class="text-[10px] text-slate-500 text-center py-4">기구 선택 또는 프리웨이트 조합이 비어있습니다.</p>';
+            // Display split scores
+            document.getElementById('split-score-badge').innerText = `${currentDayScore}점 / 10점`;
+            document.getElementById('volume-diagnostic-score').innerText = `${currentDayScore}점 / 10점`;
+
+            // Diagnose Volume Adequacy based on scientifically validated limits (minimum 6 sets required)
+            const diagnosticBanner = document.getElementById('volume-diagnostic-banner');
+            const diagnosticIcon = document.getElementById('volume-diagnostic-icon');
+            const diagnosticTitle = document.getElementById('volume-diagnostic-title');
+            const diagnosticDesc = document.getElementById('volume-diagnostic-desc');
+
+            if (totalSetsCalculated === 0) {
+                diagnosticBanner.className = "mb-4 p-3 rounded-xl border border-red-500/50 bg-red-500/10 flex items-center justify-between";
+                diagnosticIcon.innerText = "🛑";
+                diagnosticTitle.innerText = "루틴 구성 불가";
+                diagnosticDesc.innerText = "기구를 추가하거나 프리웨이트 항목을 확인해 주세요.";
+            } else if (totalSetsCalculated < 6) {
+                diagnosticBanner.className = "mb-4 p-3 rounded-xl border border-yellow-500/50 bg-yellow-500/10 flex items-center justify-between";
+                diagnosticIcon.innerText = "⚠️";
+                diagnosticTitle.innerText = "볼륨 부족 상태";
+                diagnosticDesc.innerText = `현재 총 ${totalSetsCalculated}세트입니다. 최소 6세트 이상을 구성해야 성장을 이끌 수 있습니다.`;
             } else {
-                selectedUpperRoutines.forEach(ex => {
-                    const cardHtml = makeRoutineCardHtml(ex, repsLabel, intensityPct, setsValue);
-                    upperContainer.insertAdjacentHTML('beforeend', cardHtml);
-                });
+                diagnosticBanner.className = "mb-4 p-3 rounded-xl border border-emerald-500/50 bg-emerald-500/10 flex items-center justify-between";
+                diagnosticIcon.innerText = "✅";
+                diagnosticTitle.innerText = "완벽한 볼륨 충족";
+                diagnosticDesc.innerText = `총 ${totalSetsCalculated}세트 설계로 오늘의 유효 성장 볼륨을 정확하게 조준했습니다!`;
             }
 
-            // Draw LOWER routine Cards with visible SETS mapping
-            if (selectedLowerRoutines.length === 0) {
-                lowerContainer.innerHTML = '<p class="text-[10px] text-slate-500 text-center py-4">기구 선택 또는 프리웨이트 조합이 비어있습니다.</p>';
+            // Draw Day Workout Cards
+            if (selectedDayRoutines.length === 0) {
+                outputContainer.innerHTML = '<p class="text-[10px] text-slate-500 text-center py-4">기구 혹은 프리웨이트 세트 구성을 확인해 주세요.</p>';
             } else {
-                selectedLowerRoutines.forEach(ex => {
-                    const cardHtml = makeRoutineCardHtml(ex, repsLabel, intensityPct, setsValue);
-                    lowerContainer.insertAdjacentHTML('beforeend', cardHtml);
-                });
-            }
-        }
-
-        // Helper function to render modern routine card
-        function makeRoutineCardHtml(ex, repsLabel, intensityPct, setsValue) {
-            return `
-                <div class="p-2.5 rounded-lg bg-black/40 border border-brand-darkBorder/80 hover:border-brand-red/30 transition-all flex flex-col gap-1 group">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1.5">
-                            <span class="w-1.5 h-1.5 rounded-full ${ex.cat === 'upper' ? 'bg-brand-neonBlue' : 'bg-brand-neonGreen'}"></span>
-                            <span class="text-[11px] font-bold text-white group-hover:text-brand-red transition-colors leading-none">${ex.name}</span>
+                selectedDayRoutines.forEach(ex => {
+                    const cardHtml = `
+                        <div class="p-2.5 rounded-lg bg-black/40 dark:bg-black/40 light:bg-white border border-brand-darkBorder dark:border-brand-darkBorder light:border-slate-200 hover:border-brand-red/30 transition-all flex flex-col gap-1 group">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full ${splitSelected === 'upper' ? 'bg-brand-neonBlue' : 'bg-brand-neonGreen'}"></span>
+                                    <span class="text-[11px] font-extrabold text-slate-700 dark:text-white light:text-slate-700 group-hover:text-brand-red transition-colors leading-none">${ex.name}</span>
+                                </div>
+                                <span class="px-1 py-0.2 bg-slate-800 dark:bg-slate-800 light:bg-slate-200 text-slate-400 dark:text-slate-400 light:text-slate-600 text-[8px] rounded uppercase font-bold scale-90">
+                                    ${ex.isMachine ? '머신' : '프리'}
+                                </span>
+                            </div>
+                            <!-- Displays explicit sets/reps as required (Req 3) -->
+                            <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-brand-darkBorder/40 dark:border-brand-darkBorder/40 light:border-slate-100 pt-1 mt-0.5">
+                                <span>자극 부위: <span class="text-brand-red font-bold">${getMuscleNameKorean(ex.muscle)}</span></span>
+                                <span class="text-brand-red font-bold text-xs">${repsLabel} × ${setsValue}세트 <span class="text-[9px] text-slate-400">(${intensityPct})</span></span>
+                            </div>
                         </div>
-                        <span class="px-1 py-0.2 bg-brand-darkBorder text-slate-400 text-[8px] rounded uppercase font-bold scale-90">
-                            ${ex.isMachine ? '머신' : '프리'}
-                        </span>
-                    </div>
-                    <!-- Detailed Reps and Sets added transparently per requirement 3 -->
-                    <div class="flex items-center justify-between text-[10px] text-slate-400 border-t border-brand-darkBorder/40 pt-1 mt-0.5">
-                        <span>자극 부위: <span class="text-slate-300 font-bold">${getMuscleNameKorean(ex.muscle)}</span></span>
-                        <span class="text-brand-red font-bold text-xs">${repsLabel} × ${setsValue}세트 <span class="text-[9px] text-slate-400">(${intensityPct})</span></span>
-                    </div>
-                    <div class="text-[9px] text-slate-500 text-right font-medium">자극 강점 점수: +${ex.score}점</div>
-                </div>
-            `;
+                    `;
+                    outputContainer.insertAdjacentHTML('beforeend', cardHtml);
+                });
+            }
         }
 
         function getMuscleNameKorean(eng) {
@@ -1236,7 +1180,6 @@
             };
             return dict[eng] || eng;
         }
-
 
         // Rest timer controls
         function setupRestTimer() {
@@ -1270,7 +1213,7 @@
                         document.getElementById('timer-display').innerText = "휴식 완료!";
                         btnTimer.innerText = "시작";
                         
-                        // Auto Reset Timer to duration (Req 4)
+                        // Auto Reset Timer to duration
                         resetCountdownUI();
                         
                         // Dispatch subtle custom toast pop alert (Req 4)
@@ -1301,8 +1244,7 @@
             toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
         }
 
-
-        // Wellness modal triggers
+        // Wellness modal triggers (Req 5: 쿠팡 단백질 닭가슴살 바로가기 추가)
         function setupWellnessModal() {
             const completeBtn = document.getElementById('btn-complete-routine');
             const modal = document.getElementById('wellness-modal');
@@ -1312,16 +1254,19 @@
 
             completeBtn.addEventListener('click', () => {
                 const difficulty = document.querySelector('input[name="difficulty"]:checked').value;
+                const splitSelected = document.querySelector('input[name="routine-split"]:checked').value;
                 
                 let proteinTarget = "20g";
-                let stretchDesc = "하체(대퇴사두근, 대퇴이두근)의 이완과 안전 가동범위 회복을 위해 장골근 스트레칭과 전골 폼롤러 마사지 5분을 진행하세요.";
+                let stretchDesc = "상체 전반의 가슴, 등, 어깨 폼롤러 마사지 및 활성 관절 이완법을 5분 진행하세요.";
+
+                if (splitSelected === "lower") {
+                    stretchDesc = "하체(대퇴사두근, 대퇴이두근)의 이완과 안전 가동범위 회복을 위해 장골근 스트레칭과 전골 폼롤러 마사지 5분을 진행하세요.";
+                }
                 
                 if (difficulty === "intermediate") {
                     proteinTarget = "25g";
-                    stretchDesc = "중강도 자극 부하로 축적된 피로물질을 제거하기 위해 하체 대퇴이두 가벼운 햄스트링 마사지 및 활성화된 상체 부위를 8분간 이완해주시면 완벽합니다.";
                 } else if (difficulty === "advanced") {
                     proteinTarget = "30g";
-                    stretchDesc = "고중량 상/하체 2분할 극한 긴장을 완화하기 위해 요가 코브라 자세 및 어깨 회전근개 전신 스트레칭을 12분 진행하여 피로 회복 속도를 촉진하세요.";
                 }
 
                 document.getElementById('wellness-protein-text').innerText = `오늘 강한 수축을 견딘 타겟 근육의 완벽한 웰니스 영양 공급을 위해, 가벼운 관절 완화 가이드와 함께 단백질 약 ${proteinTarget} 보충을 적극 추천합니다.`;
